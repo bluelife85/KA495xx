@@ -862,7 +862,83 @@ enum class bitdefWDT_REGEXT_OFF : unsigned char { off_immediatly = 0x00, retry =
 
 enum class bitdefCOMTIMON : unsigned char { off = 0x00, on = 0x01 };
 
-enum class bitdefSPI_WDTCount : unsigned char;
+class RegSPIWD_CTL
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegSPIWD_CTL& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::INTEN, &reg.bytes[0]);
+      return *this;
+   }
+   RegSPIWD_CTL& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::INTEN, &reg.bytes[0]);
+      return *this;
+   }
+
+   inline RegSPIWD_CTL& setWDT_STB_EN(bitdefWDT_STB_EN value)
+   {
+      reg.b.WDT_STB_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegSPIWD_CTL& setWDT_STB_EN(unsigned short value)
+   {
+      reg.b.WDT_STB_EN = value;
+      return *this;
+   }
+   inline bitdefWDT_STB_EN getWDT_STB_EN() const
+   {
+      return static_cast<bitdefWDT_STB_EN>(reg.b.WDT_STB_EN);
+   }
+
+   inline RegSPIWD_CTL& setWDT_REGEXT_OFF(bitdefWDT_REGEXT_OFF value)
+   {
+      reg.b.WDT_REG_EXT_OFF = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegSPIWD_CTL& setWDT_REGEXT_OFF(unsigned short value)
+   {
+      reg.b.WDT_REG_EXT_OFF = value;
+      return *this;
+   }
+   inline bitdefWDT_REGEXT_OFF getWDT_REGEXT_OFF() const
+   {
+      return static_cast<bitdefWDT_REGEXT_OFF>(reg.b.WDT_REG_EXT_OFF);
+   }
+
+   inline RegSPIWD_CTL& setCOMTIMON(bitdefCOMTIMON value)
+   {
+      reg.b.COMTIMON = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegSPIWD_CTL& setCOMTIMON(unsigned short value)
+   {
+      reg.b.COMTIMON = value;
+      return *this;
+   }
+   inline bitdefCOMTIMON getCOMTIMON() const
+   {
+      return static_cast<bitdefCOMTIMON>(reg.b.COMTIMON);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short WDTCOUNT : 12;
+         unsigned short COMTIMON : 1;
+         unsigned short WDT_REG_EXT_OFF : 1;
+         unsigned short WDT_STB_EN : 1;
+         unsigned short : 1;
+      } b;
+   } reg;
+}
 
 enum class bitdefFDRV_ALM_SD : unsigned char { no_response = 0x00, auto_off = 0x01 };
 
