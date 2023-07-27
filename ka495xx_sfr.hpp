@@ -869,13 +869,13 @@ public:
    RegSPIWD_CTL& write()
    {
       if(ifc == nullptr) return;
-      ifc->write(Ka495xx_addr::INTEN, &reg.bytes[0]);
+      ifc->write(Ka495xx_addr::SPIWD, &reg.bytes[0]);
       return *this;
    }
    RegSPIWD_CTL& update()
    {
       if(ifc == nullptr) return;
-      ifc->read(Ka495xx_addr::INTEN, &reg.bytes[0]);
+      ifc->read(Ka495xx_addr::SPIWD, &reg.bytes[0]);
       return *this;
    }
 
@@ -938,7 +938,7 @@ private:
          unsigned short : 1;
       } b;
    } reg;
-}
+};
 
 enum class bitdefFDRV_ALM_SD : unsigned char { no_response = 0x00, auto_off = 0x01 };
 
@@ -948,7 +948,7 @@ enum class bitdefFDRV_ALM_CLR : unsigned char { no_change = 0x00, clear = 0x01 }
 
 enum class bitdefNPD_FDRV : unsigned char { power_down = 0x00, normal = 0x01 };
 
-enum class bitdefFDRVG_SEL_CLK : unsigned char { div32 = 0x00, div128 = 0x01 };
+enum class bitdefFDRV_SEL_CLK : unsigned char { div32 = 0x00, div128 = 0x01 };
 
 enum class bitdefFDRV_CHG_FET : unsigned char { charge_off = 0x00, charge_on = 0x01 };
 
@@ -972,6 +972,196 @@ enum class bitdefFDRV_OUVCTL : unsigned char
 {
    cross_off_on_event = 0x00,
    both_off_on_event = 0x01
+};
+
+class RegFDRV_CTRL
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegFDRV_CTRL& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::FDRV, &reg.bytes[0]);
+      return *this;
+   }
+   RegFDRV_CTRL& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::FDRV, &reg.bytes[0]);
+      return *this;
+   }
+
+   inline RegFDRV_CTRL& setFDRV_ALM_SD(bitdefFDRV_ALM_SD value)
+   {
+      reg.b.FDRV_ALM_SD = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFDRV_CTRL& setFDRV_ALM_SD(unsigned short value)
+   {
+      reg.b.FDRV_ALM_SD = value;
+      return *this;
+   }
+   inline bitdefFDRV_ALM_SD getFDRV_ALM_SD() const
+   {
+      return static_cast<bitdefFDRV_ALM_SD>(reg.b.FDRV_ALM_SD);
+   }
+
+   inline RegFDRV_CTRL& setFDRV_ALM_RCV(bitdefFDRV_ALM_RCV value)
+   {
+      reg.b.FDRV_ALM_RCV = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFDRV_CTRL& setFDRV_ALM_RCV(unsigned short value)
+   {
+      reg.b.FDRV_ALM_RCV = value;
+      return *this;
+   }
+   inline bitdefFDRV_ALM_RCV getFDRV_ALM_RCV() const
+   {
+      return static_cast<bitdefFDRV_ALM_RCV>(reg.b.FDRV_ALM_RCV);
+   }
+
+   inline RegFDRV_CTRL& setFDRV_ALM_CLR(bitdefFDRV_ALM_CLR value)
+   {
+      reg.b.FDRV_ALM_CLR = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFDRV_CTRL& setFDRV_ALM_CLR(unsigned short value)
+   {
+      reg.b.FDRV_ALM_CLR = value;
+      return *this;
+   }
+   inline bitdefFDRV_ALM_CLR getFDRV_ALM_CLR() const
+   {
+      return static_cast<bitdefFDRV_ALM_CLR>(reg.b.FDRV_ALM_CLR);
+   }
+
+   inline RegFDRV_CTRL& setNPD_FDRV(bitdefNPD_FDRV value)
+   {
+      reg.b.NPD_FDRV = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFDRV_CTRL& setNPD_FDRV(unsigned short value)
+   {
+      reg.b.NPD_FDRV = value;
+      return *this;
+   }
+   inline bitdefNPD_FDRV getNPD_FDRV() const
+   {
+      return static_cast<bitdefNPD_FDRV>(reg.b.NPD_FDRV);
+   }
+
+   inline RegFDRV_CTRL& setFDRV_SEL_CLK(bitdefFDRV_SEL_CLK value)
+   {
+      reg.b.FDRV_SEL_CLK = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFDRV_CTRL& setFDRV_SEL_CLK(unsigned short value)
+   {
+      reg.b.FDRV_SEL_CLK = value;
+      return *this;
+   }
+   inline bitdefFDRV_SEL_CLK getFDRV_SEL_CLK() const
+   {
+      return static_cast<bitdefFDRV_SEL_CLK>(reg.b.FDRV_SEL_CLK);
+   }
+
+   inline RegFDRV_CTRL& setFDRV_CHG_FET(bitdefFDRV_CHG_FET value)
+   {
+      reg.b.FDRV_CHG_FET = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFDRV_CTRL& setFDRV_CHG_FET(unsigned short value)
+   {
+      reg.b.FDRV_CHG_FET = value;
+      return *this;
+   }
+   inline bitdefFDRV_CHG_FET getFDRV_CHG_FET() const
+   {
+      return static_cast<bitdefFDRV_CHG_FET>(reg.b.FDRV_CHG_FET);
+   }
+
+   inline RegFDRV_CTRL& setFDRV_DIS_FET(bitdefFDRV_DIS_FET value)
+   {
+      reg.b.FDRV_DIS_FET = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFDRV_CTRL& setFDRV_DIS_FET(unsigned short value)
+   {
+      reg.b.FDRV_DIS_FET = value;
+      return *this;
+   }
+   inline bitdefFDRV_DIS_FET getFDRV_DIS_FET() const
+   {
+      return static_cast<bitdefFDRV_DIS_FET>(reg.b.FDRV_DIS_FET);
+   }
+
+   inline RegFDRV_CTRL& setFDRV_STBY(bitdefFDRV_STBY value)
+   {
+      reg.b.FDRV_STBY = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFDRV_CTRL& setFDRV_STBY(unsigned short value)
+   {
+      reg.b.FDRV_STBY = value;
+      return *this;
+   }
+   inline bitdefFDRV_STBY getFDRV_STBY() const
+   {
+      return static_cast<bitdefFDRV_STBY>(reg.b.FDRV_STBY);
+   }
+
+   inline RegFDRV_CTRL& setFDRV_LEVEL(bitdefFDRV_LEVEL value)
+   {
+      reg.b.FDRV_LEVEL = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFDRV_CTRL& setFDRV_LEVEL(unsigned short value)
+   {
+      reg.b.FDRV_LEVEL = value;
+      return *this;
+   }
+   inline bitdefFDRV_LEVEL getFDRV_LEVEL() const
+   {
+      return static_cast<bitdefFDRV_LEVEL>(reg.b.FDRV_LEVEL);
+   }
+
+   inline RegFDRV_CTRL& setFDRV_OUV_CTL(bitdefFDRV_OUVCTL value)
+   {
+      reg.b.FDRV_OUV_CTL = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFDRV_CTRL& setFDRV_OUV_CTL(unsigned short value)
+   {
+      reg.b.FDRV_OUV_CTL = value;
+      return *this;
+   }
+   inline bitdefFDRV_OUVCTL getFDRV_OUV_CTL() const
+   {
+      return static_cast<bitdefFDRV_OUVCTL>(reg.b.FDRV_OUV_CTL);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short  : 1;
+         unsigned short FDRV_OUV_CTL : 1;
+         unsigned short FDRV_LEVEL : 3;
+         unsigned short  : 3;
+         unsigned short FDRV_STBY : 1;
+         unsigned short FDRV_DIS_FET : 1;
+         unsigned short FDRV_CHG_FET : 1;
+         unsigned short FDRV_SEL_CLK : 1;
+         unsigned short NPD_FDRV : 1;
+         unsigned short FDRV_ALM_CLR : 1;
+         unsigned short FDRV_ALM_RCV : 1;
+         unsigned short FDRV_ALM_SD : 1;
+      } b;
+   } reg;
 };
 
 enum class bitdefCVSEL : unsigned long
