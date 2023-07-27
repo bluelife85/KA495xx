@@ -349,228 +349,202 @@ public:
    // bit ADC_CONT
    inline RegPWR_CTRL& setADC_CONT(bitdefADC_CONT value)
    {
-      ADC_CONT = value;
       reg.b.ADC_CONT = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setADC_CONT(unsigned short value)
    {
-      ADC_CONT = static_cast<bitdefADC_CONT>(value);
       reg.b.ADC_CONT = value;
       return *this;
    }
    inline bitdefADC_CONT getADC_CONT() const
    {
-      return ADC_CONT;
+      return static_cast<bitdefADC_CONT>(reg.b.ADC_CONT);
    }
 
    // bit INTM_TIM
    inline RegPWR_CTRL& setINTM_TIM(bitdefINTM_TIM value)
    {
-      INTM_TIM = value;
       reg.b.INTM_TIM = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setINTM_TIM(unsigned short value)
    {
-      INTM_TIM = static_cast<bitdefINTM_TIM>(value);
       reg.b.INTM_TIM = value;
       return *this;
    }
    inline bitdefINTM_TIM getINTM_TIM() const
    {
-      return INTM_TIM;
+      return static_cast<bitdefINTM_TIM>(reg.b.INTM_TIM);
    }
 
    // bit INTM_SEL
    inline RegPWR_CTRL& setINTM_SEL(bitdefINTM_SEL value)
    {
-      INTM_SEL = value;
       reg.b.INTM_SEL = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setINTM_SEL(unsigned short value)
    {
-      INTM_SEL = static_cast<bitdefINTM_SEL>(value);
       reg.b.INTM_SEL = value;
       return *this;
    }
    inline bitdefINTM_SEL getINTM_SEL() const
    {
-      return INTM_SEL;
+      return static_cast<bitdefINTM_SEL>(reg.b.INTM_SEL);
    }
 
    // bit LDM_SLP_EN
    inline RegPWR_CTRL& setLDM_SLP_EN(bitdefLDM_SLP_EN value)
    {
-      LDM_SLP_EN = value;
       reg.b.LDM_SLP_EN = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setLDM_SLP_EN(unsigned short value)
    {
-      LDM_SLP_EN = static_cast<bitdefLDM_SLP_EN>(value);
       reg.b.LDM_SLP_EN = value;
       return *this;
    }
    inline bitdefLDM_SLP_EN getLDM_SLP_EN() const
    {
-      return LDM_SLP_EN;
+      return static_cast<bitdefLDM_SLP_EN>(reg.b.LDM_SLP_EN);
    }
 
    // bit VPC_SLP_EN
    inline RegPWR_CTRL& setVPC_SLP_EN(bitdefVPC_SLP_EN value)
    {
-      VPC_SLP_EN = value;
       reg.b.LDM_SLP_EN = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setVPC_SLP_EN(unsigned short value)
    {
-      VPC_SLP_EN = static_cast<bitdefVPC_SLP_EN>(value);
       reg.b.VPC_SLP_EN = value;
       return *this;
    }
    inline bitdefVPC_SLP_EN getVPC_SLP_EN() const
    {
-      return VPC_SLP_EN;
+      return static_cast<bitdefVPC_SLP_EN>(reg.b.VPC_SLP_EN);
    }
 
    // bit LDM_STB_EN
    inline RegPWR_CTRL& setLDM_STB_EN(bitdefLDM_STB_EN value)
    {
-      LDM_STB_EN = value;
       reg.b.LDM_STB_EN = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setLDM_STB_EN(unsigned short value)
    {
-      LDM_STB_EN = static_cast<bitdefLDM_STB_EN>(value);
       reg.b.LDM_STB_EN = value;
       return *this;
    }
    inline bitdefLDM_STB_EN getLDM_STB_EN() const
    {
-      return LDM_STB_EN;
+      return static_cast<bitdefLDM_STB_EN>(reg.b.LDM_STB_EN);
    }
 
    // bit VPC_STB_EN
    inline RegPWR_CTRL& setVPC_STB_EN(bitdefVPC_STB_EN value)
    {
-      VPC_STB_EN = value;
       reg.b.VPC_STB_EN = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setVPC_STB_EN(unsigned short value)
    {
-      VPC_STB_EN = static_cast<bitdefVPC_STB_EN>(value);
       reg.b.VPC_STB_EN = value;
       return *this;
    }
    inline bitdefVPC_STB_EN getVPC_STB_EN() const
    {
-      return VPC_STB_EN;
+      return static_cast<bitdefVPC_STB_EN>(reg.b.VPC_STB_EN);
    }
    // bit AUTO_TIM
    inline RegPWR_CTRL& setAUTO_TIM(bitdefAUTO_TIM value)
    {
-      AUTO_TIM = value;
       reg.b.AUTO_TIM = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setAUTO_TIM(unsigned short value)
    {
-      AUTO_TIM = static_cast<bitdefAUTO_TIM>(value);
       reg.b.AUTO_TIM = value;
       return *this;
    }
    inline bitdefAUTO_TIM getAUTO_TIM() const
    {
-      return AUTO_TIM;
+      return static_cast<bitdefAUTO_TIM>(reg.b.AUTO_TIM);
    }
 
    //bit MSET_STB
    inline RegPWR_CTRL& setMSET_STB(bitdefMSET_STB value)
    {
-      MSET_STB = value;
       reg.b.MSET_STB = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setMSET_STB(unsigned short value)
    {
-      MSET_STB = static_cast<bitdefMSET_STB>(value);
       reg.b.MSET_STB = value;
       return *this;
    }
    inline bitdefMSET_STB getMSET_STB() const
    {
-      return MSET_STB;
+      return static_cast<bitdefMSET_STB>(reg.b.MSET_STB);
    }
 
    // bit MSET_LP
    inline RegPWR_CTRL& setMSET_LP(bitdefMSET_LP value)
    {
-      MSET_LP = value;
       reg.b.MSET_STB = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setMSET_LP(unsigned short value)
    {
-      MSET_LP = static_cast<bitdefMSET_LP>(value);
       reg.b.MSET_LP = value;
       return *this;
    }
    inline bitdefMSET_LP getMSET_LP() const
    {
-      return MSET_LP;
+      return static_cast<bitdefMSET_LP>(reg.b.MSET_LP);
    }
 
    // bit MSET_SLP
    inline RegPWR_CTRL& setMSET_SLP(bitdefMSET_SLP value)
    {
-      MSET_SLP = value;
       reg.b.MSET_SLP = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setMSET_SLP(unsigned short value)
    {
-      MSET_SLP = static_cast<bitdefMSET_SLP>(value);
       reg.b.MSET_SLP = static_cast<unsigned short>(value);
       return *this;
    }
    inline bitdefMSET_SLP getMSET_SLP() const
    {
-      return MSET_SLP;
+      return static_cast<bitdefMSET_SLP>(reg.b.MSET_SLP);
    }
 
    // bit MSET_SHDN
    inline RegPWR_CTRL& setMSET_SHDN(bitdefMSET_SHDN value)
    {
-      MSET_SHDN = value;
       reg.b.MSET_SHDN = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setMSET_SHDN(unsigned short value)
    {
-      MSET_SHDN = static_cast<bitdefMSET_SHDN>(value);
       reg.b.MSET_SHDN = value;
       return *this;
    }
    inline bitdefMSET_SHDN getMSET_SHDN() const
    {
-      return MSET_SHDN;
+      return static_cast<bitdefMSET_SHDN>(reg.b.MSET_SHDN);
    }
 
    // bit NPD_RST
    inline RegPWR_CTRL& setNPD_RST(bitdefNPD_RST value)
    {
-      NPD_RST = value;
       reg.b.MSET_SHDN = static_cast<unsigned short>(value);
       return *this;
    }
    inline RegPWR_CTRL& setNPD_RST(unsigned short value)
    {
-      NPD_RST = static_cast<unsigned short>(value);
       reg.b.NPD_RST = value;
       return *this;
    }
@@ -597,19 +571,6 @@ private:
          unsigned short ADC_CONT : 1;
       } b;
    } reg;
-   bitdefADC_CONT ADC_CONT;
-   bitdefINTM_TIM INTM_TIM;
-   bitdefINTM_SEL INTM_SEL;
-   bitdefLDM_SLP_EN LDM_SLP_EN;
-   bitdefVPC_SLP_EN VPC_SLP_EN;
-   bitdefLDM_STB_EN LDM_STB_EN;
-   bitdefVPC_STB_EN VPC_STB_EN;
-   bitdefAUTO_TIM AUTO_TIM;
-   bitdefMSET_STB MSET_STB;
-   bitdefMSET_LP MSET_LP;
-   bitdefMSET_SLP MSET_SLP;
-   bitdefMSET_SHDN MSET_SHDN;
-   bitdefNPD_RST NPD_RST;
 };
 
 enum class bitdefINT5_EN : unsigned char { wdt_int_disable = 0x00, wdt_int_enable = 0x01 };
@@ -653,6 +614,247 @@ enum class bitdefSTB_VDD55_LPEN : unsigned char { hp_mode = 0x00, lp_mode = 0x01
 enum class bitdefSLP_VDD55_LPEN : unsigned char { hp_mode = 0x00, lp_mode = 0x01 };
 
 enum class bitdefINTM_VDD55_LPEN : unsigned char { hp_mode = 0x00, lp_mode = 0x01 };
+
+class RegINT_EN
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegINT_EN& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::INTEN, &reg.bytes[0]);
+      return *this;
+   }
+   RegINT_EN& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::INTEN, &reg.bytes[0]);
+      return *this;
+   }
+
+   inline RegINT_EN& setINT5_EN(bitdefINT5_EN value)
+   {
+      reg.b.INT5_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setINT5_EN(unsigned short value)
+   {
+      reg.b.INT5_EN = value;
+      return *this;
+   }
+   inline bitdefINT4_EN getINT4_EN() const
+   {
+      return static_cast<bitdefINT4_EN>(reg.b.INT4_EN);
+   }
+
+   inline RegINT_EN& setINT4_EN(bitdefINT4_EN value)
+   {
+      reg.b.INT4_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setINT4_EN(unsigned short value)
+   {
+      reg.b.INT4_EN = value;
+      return *this;
+   }
+   inline bitdefINT4_EN getINT4_EN() const
+   {
+      return static_cast<bitdefINT4_EN>(reg.b.INT4_EN);
+   }
+
+   inline RegINT_EN& setINT3_EN(bitdefINT3_EN value)
+   {
+      reg.b.INT3_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setINT3_EN(unsigned short value)
+   {
+      reg.b.INT3_EN = value;
+      return *this;
+   }
+   inline bitdefINT3_EN getINT3_EN() const
+   {
+      return static_cast<bitdefINT3_EN>(reg.b.INT3_EN);
+   }
+
+   inline RegINT_EN& setINT2_EN(bitdefINT2_EN value)
+   {
+      reg.b.INT2_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setINT2_EN(unsigned short value)
+   {
+      reg.b.INT2_EN = value;
+      return *this;
+   }
+   inline bitdefINT2_EN getINT2_EN() const
+   {
+      return static_cast<bitdefINT2_EN>(reg.b.INT2_EN);
+   }
+
+   inline RegINT_EN& setINT1_EN(bitdefINT1_EN value)
+   {
+      reg.b.INT1_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setINT1_EN(unsigned short value)
+   {
+      reg.b.INT1_EN = value;
+      return *this;
+   }
+   inline bitdefINT1_EN getINT1_EN() const
+   {
+      return static_cast<bitdefINT1_EN>(reg.b.INT1_EN);
+   }
+
+   inline RegINT_EN& setCHG_DIS_CLR(bitdefCHG_DIS_CLR value)
+   {
+      reg.b.CHG_DIS_CLR = static_cast<unsigned short>(value);
+      return *this;
+   }
+
+   inline RegINT_EN& setCHG_DIS_CLR(unsigned short value)
+   {
+      reg.b.CHG_DIS_CLR = value;
+      return *this;
+   }
+
+   inline bitdefCHG_DIS_CLR getCHG_DIS_CLR() const
+   {
+      return static_cast<bitdefCHG_DIS_CLR>(reg.b.CHG_DIS_CLR);
+   }
+
+   inline RegINT_EN& setREG_EXT_EN(bitdefREGEXT_EN value)
+   {
+      reg.b.REG_EXT_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setREG_EXT_EN(unsigned short value)
+   {
+      reg.b.REG_EXT_EN = value;
+      return *this;
+   }
+   inline bitdefREGEXT_EN getREG_EXT_EN() const
+   {
+      return static_cast<bitdefREGEXT_EN>(reg.b.REG_EXT_EN);
+   }
+
+   inline RegINT_EN& setSTB_REG_EXT_LPEN(bitdefSTB_REGEXT_LPEN value)
+   {
+      reg.b.STB_REG_EXT_LPEN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setSTB_REG_EXT_LPEN(unsigned short value)
+   {
+      reg.b.STB_REG_EXT_LPEN = value;
+      return *this;
+   }
+   inline bitdefSTB_REGEXT_LPEN getSTB_REG_EXT_LPEN() const
+   {
+      return static_cast<bitdefSTB_REGEXT_LPEN>(reg.b.STB_REG_EXT_LPEN);
+   }
+
+   inline RegINT_EN& setSLP_REG_EXT_LPEN(bitdefSLP_REGEXT_LPEN value)
+   {
+      reg.b.SLP_REG_EXT_LPEN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setSLP_REG_EXT_LPEN(unsigned short value)
+   {
+      reg.b.SLP_REG_EXT_LPEN = value;
+      return *this;
+   }
+   inline bitdefSLP_REGEXT_LPEN getSLP_REG_EXT_LPEN() const
+   {
+      return static_cast<bitdefSLP_REGEXT_LPEN>(reg.b.SLP_REG_EXT_LPEN);
+   }
+
+   inline RegINT_EN& setINTM_REG_EXT_LPEN(bitdefINTM_REGEXT_LPEN value)
+   {
+      reg.b.INTM_REG_EXT_LPEN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setINTM_REG_EXT_LPEN(unsigned short value)
+   {
+      reg.b.INTM_REG_EXT_LPEN = value;
+      return *this;
+   }
+   inline bitdefINTM_REGEXT_LPEN getINTM_REG_EXT_LPEN() const
+   {
+      return static_cast<bitdefINTM_REGEXT_LPEN>(reg.b.INTM_REG_EXT_LPEN);
+   }
+
+   inline RegINT_EN& setSTB_VDD55_LPEN(bitdefSTB_VDD55_LPEN value)
+   {
+      reg.b.STB_VDD55_LPEN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setSTB_VDD55_LPEN(unsigned short value)
+   {
+      reg.b.STB_VDD55_LPEN = value;
+      return *this;
+   }
+   inline bitdefSTB_VDD55_LPEN getSTB_VDD55_LPEN() const
+   {
+      return static_cast<bitdefSTB_VDD55_LPEN>(reg.b.STB_VDD55_LPEN);
+   }
+
+   inline RegINT_EN& setSLP_VDD55_LPEN(bitdefSLP_VDD55_LPEN value)
+   {
+      reg.b.SLP_VDD55_LPEN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setSLP_VDD55_LPEN(unsigned short value)
+   {
+      reg.b.SLP_VDD55_LPEN = value;
+      return *this;
+   }
+   inline bitdefSLP_VDD55_LPEN getSLP_VDD55_LPEN() const
+   {
+      return static_cast<bitdefSLP_VDD55_LPEN>(reg.b.SLP_VDD55_LPEN);
+   }
+
+   inline RegINT_EN& setINTM_VDD55_LPEN(bitdefINTM_VDD55_LPEN value)
+   {
+      reg.b.INTM_VDD55_LPEN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegINT_EN& setINTM_VDD55_LPEN(unsigned short value)
+   {
+      reg.b.INTM_VDD55_LPEN = value;
+      return *this;
+   }
+   inline bitdefINTM_VDD55_LPEN getINTM_VDD55_LPEN() const
+   {
+      return static_cast<bitdefINTM_VDD55_LPEN>(reg.b.INTM_VDD55_LPEN);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short : 1;
+         unsigned short INTM_VDD55_LPEN : 1;
+         unsigned short SLP_VDD55_LPEN : 1;
+         unsigned short STB_VDD55_LPEN : 1;
+         unsigned short INTM_REG_EXT_LPEN : 1;
+         unsigned short SLP_REG_EXT_LPEN : 1;
+         unsigned short STB_REG_EXT_LPEN : 1;
+         unsigned short : 1;
+         unsigned short REG_EXT_EN : 1;
+         unsigned short : 1;
+         unsigned short CHG_DIS_CLR : 1;
+         unsigned short INT1_EN : 1;
+         unsigned short INT2_EN : 1;
+         unsigned short INT3_EN : 1;
+         unsigned short INT4_EN : 1;
+         unsigned short INT5_EN : 1;
+      } b;
+   } reg;
+};
 
 enum class bitdefWDT_STB_EN : unsigned char { disable = 0x00, enable = 0x01 };
 
