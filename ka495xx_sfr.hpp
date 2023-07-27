@@ -1214,6 +1214,86 @@ bitdefCVSEL operator&(bitdefCVSEL a, bitdefCVSEL b)
    return ret;
 }
 
+class RegCVSEL
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegCVSEL& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::CVSEL1, &CVSEL1.bytes[0]);
+      ifc->write(Ka495xx_addr::CVSEL2, &CVSEL2.bytes[0]);
+      return *this;
+   }
+   RegCVSEL& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::CVSEL1, &CVSEL1.bytes[0]);
+      ifc->read(Ka495xx_addr::CVSEL2, &CVSEL2.bytes[0]);
+      return *this;
+   }
+
+   RegCVSEL& select(bitdefCVSEL channel)
+   {
+      unsigned long lower = static_cast<unsigned long>(channel) & 0x00007FFF;
+      unsigned long upper = (static_cast<unsigned long>(channel) & 0x003F8000) >> 15;
+      CVSEL1.hfword = lower;
+      CVSEL2.hfword = upper;
+      return *this;
+   }
+   RegCVSEL& deselect(bitdefCVSEL channel)
+   {
+      unsigned long lower = static_cast<unsigned long>(channel) & 0x00007FFF;
+      unsigned long upper = (static_cast<unsigned long>(channel) & 0x003F8000) >> 15;
+      CVSEL1.hfword &= ~lower;
+      CVSEL2.hfword &= ~upper;
+      return *this;
+   }
+private:
+   Ka495xx_interface* ifc;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL1 : 1;
+         unsigned short CELL2 : 1;
+         unsigned short CELL3 : 1;
+         unsigned short CELL4 : 1;
+         unsigned short CELL5 : 1;
+         unsigned short CELL6 : 1;
+         unsigned short CELL7 : 1;
+         unsigned short CELL8 : 1;
+         unsigned short CELL9 : 1;
+         unsigned short CELL10 : 1;
+         unsigned short CELL11 : 1;
+         unsigned short CELL12 : 1;
+         unsigned short CELL13 : 1;
+         unsigned short CELL14 : 1;
+         unsigned short CELL15 : 1;
+         unsigned short CELL16 : 1;
+      } b;
+   } CVSEL1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL17 : 1;
+         unsigned short CELL18 : 1;
+         unsigned short CELL19 : 1;
+         unsigned short CELL20 : 1;
+         unsigned short CELL21 : 1;
+         unsigned short CELL22 : 1;
+         unsigned short : 10;
+      } b;
+   } CVSEL2;
+};
+
 enum class bitdefGVSEL : unsigned short
 {
    VPACK = 0x0001,
