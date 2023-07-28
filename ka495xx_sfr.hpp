@@ -2091,10 +2091,153 @@ enum class bitdefADIH_LATCH : unsigned char
    conversion = 0x01
 };
 
-enum class bitdefADI_LATCH : unsigned char
+enum class bitdefADV_LATCH : unsigned char
 {
    not_effect = 0x00,
    conversion = 0x01
+};
+
+class RegOPMODE
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegOPMODE& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::OPMODE, &OPMODE.bytes[0]);
+      return *this;
+   }
+   RegOPMODE& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::OPMODE, &OPMODE.bytes[0]);
+      return *this;
+   }
+
+   inline RegOPMODE& setCB_SET(bitdefCB_SET value)
+   {
+      OPMODE.b.CB_SET = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegOPMODE& setCB_SET(unsigned short value)
+   {
+      OPMODE.b.CB_SET = value;
+      return *this;
+   }
+   inline bitdefCB_SET getCB_SET() const
+   {
+      return static_cast<bitdefCB_SET>(OPMODE.b.CB_SET);
+   }
+
+   inline RegOPMODE& setUVMSK(bitdefUVMSK value)
+   {
+      OPMODE.b.UV_MSK = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegOPMODE& setUVMSK(unsigned short value)
+   {
+      OPMODE.b.UV_MSK = value;
+      return *this;
+   }
+   inline bitdefUVMSK getUVMSK() const
+   {
+      return static_cast<bitdefUVMSK>(OPMODE.b.UV_MSK);
+   }
+
+   inline RegOPMODE& setOVMSK(bitdefOVMSK value)
+   {
+      OPMODE.b.OV_MSK = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegOPMODE& setOVMSK(unsigned short value)
+   {
+      OPMODE.b.OV_MSK = value;
+      return *this;
+   }
+   inline bitdefOVMSK getOVMSK() const
+   {
+      return static_cast<bitdefOVMSK>(OPMODE.b.OV_MSK);
+   }
+
+   inline RegOPMODE& setADC_TRG(bitdefADC_TRG value)
+   {
+      OPMODE.b.ADC_TRG = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegOPMODE& setADC_TRG(unsigned short value)
+   {
+      OPMODE.b.ADC_TRG = value;
+      return *this;
+   }
+   inline bitdefADC_TRG getADC_TRG() const
+   {
+      return static_cast<bitdefADC_TRG>(OPMODE.b.ADC_TRG);
+   }
+
+   inline RegOPMODE& setADIL_LATCH(bitdefADIL_LATCH value)
+   {
+      OPMODE.b.ADIL_LATCH = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegOPMODE& setADIL_LATCH(unsigned short value)
+   {
+      OPMODE.b.ADIL_LATCH = value;
+      return *this;
+   }
+   inline bitdefADIL_LATCH getADIL_LATCH() const
+   {
+      return static_cast<bitdefADIL_LATCH>(OPMODE.b.ADIL_LATCH);
+   }
+
+   inline RegOPMODE& setADIH_LATCH(bitdefADIH_LATCH value)
+   {
+      OPMODE.b.ADIH_LATCH = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegOPMODE& setADIH_LATCH(unsigned short value)
+   {
+      OPMODE.b.ADIH_LATCH = value;
+      return *this;
+   }
+   inline bitdefADIH_LATCH getADIH_LATCH() const
+   {
+      return static_cast<bitdefADIH_LATCH>(OPMODE.b.ADIH_LATCH);
+   }
+
+   inline RegOPMODE& setADV_LATCH(bitdefADV_LATCH value)
+   {
+      OPMODE.b.ADV_LATCH = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegOPMODE& setADV_LATCH(unsigned short value)
+   {
+      OPMODE.b.ADV_LATCH = value;
+      return *this;
+   }
+   inline bitdefADV_LATCH getADV_LATCH() const
+   {
+      return static_cast<bitdefADV_LATCH>(OPMODE.b.ADV_LATCH);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short ADV_LATCH : 1;
+         unsigned short ADIH_LATCH : 1;
+         unsigned short ADIL_LATCH : 1;
+         unsigned short : 1;
+         unsigned short ADC_TRG : 1;
+         unsigned short  : 1;
+         unsigned short OV_MSK : 1;
+         unsigned short UV_MSK : 1;
+         unsigned short CB_SET : 1;
+         unsigned short : 7;
+      } b;
+   } OPMODE;
 };
 
 enum class bitdefGPIO1SEL : unsigned char
