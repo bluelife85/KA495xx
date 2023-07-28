@@ -1334,6 +1334,58 @@ bitdefGVSEL operator&(bitdefGVSEL a, bitdefGVSEL b)
    return ret;
 }
 
+class RegGVSEL
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegGVSEL& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::GVSEL, &reg.bytes[0]);
+      return *this;
+   }
+   RegGVSEL& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::GVSEL, &reg.bytes[0]);
+      return *this;
+   }
+   RegGVSEL& select(bitdefGVSEL channel)
+   {
+      reg.hfword = static_cast<unsigned short>(channel);
+      return *this;
+   }
+   RegGVSEL& deselect(bitdefGVSEL channel)
+   {
+      reg.hfword &= ~static_cast<unsigned short>(channel);
+      return *this;
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short VPACKSEL : 1;
+         unsigned short TMONI1SEL : 1;
+         unsigned short TMONI2SEL : 1;
+         unsigned short TMONI3SEL : 1;
+         unsigned short TMONI4SEL : 1;
+         unsigned short TMONI5SEL : 1;
+         unsigned short VDD55SEL : 1;
+         unsigned short GPAD1SEL : 1;
+         unsigned short GPAD2SEL : 1;
+         unsigned short : 3;
+         unsigned short VDD18SEL : 1;
+         unsigned short REG_EXT_SEL : 1;
+         unsigned short VREF2SEL : 1;
+         unsigned short : 1;
+      } b;
+   } reg;
+};
+
 enum class bitdefDLY_FUSE_2V : unsigned char
 {
    delay_1000ms = 0x00,
