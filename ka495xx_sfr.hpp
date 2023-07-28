@@ -2240,7 +2240,7 @@ private:
    } OPMODE;
 };
 
-enum class bitdefGPIO1SEL : unsigned char
+enum class bitdefGPIOSEL : unsigned short
 {
    GPIO = 0x00,
    GPIOH1 = 0x01,
@@ -2257,146 +2257,207 @@ enum class bitdefGPIO1SEL : unsigned char
    mcu_int = 0x0C
 };
 
-enum class bitdefGPIO1_CHDRV : unsigned char
+enum class bitdefGPIO_CHDRV : unsigned short
 {
    drive_2mA = 0x00,
    drive_4mA = 0x01
 };
 
-enum class bitdefGPIO1_OUT : unsigned char
+enum class bitdefGPIO_OUT : unsigned short
 {
    low = 0x00,
    high = 0x01
 };
 
-enum class bitdefGPIO1_MODE : unsigned char
+enum class bitdefGPIO_MODE : unsigned short
 {
    push_pull = 0x00,
    open_drain = 0x01
 };
 
-enum class bitdefGPIO1_PD : unsigned char
+enum class bitdefGPIO_PD : unsigned short
 {
    no_pulldown = 0x00,
    pulldown = 0x01
 };
 
-enum class bitdefGPIO1_NOE : unsigned char
+enum class bitdefGPIO_NOE : unsigned short
 {
    enable = 0x00,
    disable = 0x01
 };
 
-enum class bitdefGPIO1_IE : unsigned char
+enum class bitdefGPIO_IE : unsigned short
 {
    disable = 0x00,
    enable = 0x01
 };
 
-enum class bitdefGPIO2SEL : unsigned char
+
+enum class GPIOId
 {
-   GPIO = 0x00,
-   GPIOH1 = 0x01,
-   GPIOH2 = 0x02,
-   ADIRQ1 = 0x03,
-   ADIRQ2 = 0x04,
-   HSOSC = 0x05,
-   LSOSC = 0x06,
-   active_state = 0x07,
-   standby_state = 0x08,
-   lp_state = 0x09,
-   fuse_fet = 0x0A,
-   alarm2 = 0x0B,
-   mcu_int = 0x0C
+   GPIO1,
+   GPIO2,
+   GPIO3
 };
 
-enum class bitdefGPIO2_CHDRV : unsigned char
+class RegGPIO123
 {
-   drive_2mA = 0x00,
-   drive_4mA = 0x01
-};
+public:
+   RegGPIO123(GPIOId id)
+   {
+      this->id = id;
+      switch(id)
+      {
+         case GPIOId::GPIO1:
+         address = Ka495xx_addr::GPIO1;
+         break;
+         case GPIOId::GPIO2:
+         address = Ka495xx_addr::GPIO2;
+         break;
+         case GPIOId::GPIO3:
+         address = Ka495xx_addr::GPIO3;
+         break;
+      }
+   }
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegGPIO123& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(address, &GPIO.bytes[0]);
+      return *this;
+   }
+   RegGPIO123& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(address, &GPIO.bytes[0]);
+      return *this;
+   }
+   inline RegGPIO123& setGPIOSEL(bitdefGPIOSEL value)
+   {
+      GPIO.b.GPIOSEL = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIO123& setGPIOSEL(unsigned short value)
+   {
+      GPIO.b.GPIOSEL = value;
+      return *this;
+   }
+   inline bitdefGPIOSEL getGPIOSEL() const
+   {
+      return static_cast<bitdefGPIOSEL>(GPIO.b.GPIOSEL);
+   }
 
-enum class bitdefGPIO2_OUT : unsigned char
-{
-   low = 0x00,
-   high = 0x01
-};
+   inline RegGPIO123& setCHDRV(bitdefGPIO_CHDRV value)
+   {
+      GPIO.b.GPIO_CHDRV = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIO123& setCHDRV(unsigned short value)
+   {
+      GPIO.b.GPIO_CHDRV = value;
+      return *this;
+   }
+   inline bitdefGPIO_CHDRV getCHDRV() const
+   {
+      return static_cast<bitdefGPIO_CHDRV>(GPIO.b.GPIO_CHDRV);
+   }
 
-enum class bitdefGPIO2_MODE : unsigned char
-{
-   push_pull = 0x00,
-   open_drain = 0x01
-};
+   inline RegGPIO123& setOutput(bitdefGPIO_OUT value)
+   {
+      GPIO.b.GPIO_OUT = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIO123& setOutput(unsigned short value)
+   {
+      GPIO.b.GPIO_OUT = value;
+      return *this;
+   }
+   inline bitdefGPIO_OUT getOutState() const
+   {
+      return static_cast<bitdefGPIO_OUT>(GPIO.b.GPIO_OUT);
+   }
 
-enum class bitdefGPIO2_PD : unsigned char
-{
-   no_pulldown = 0x00,
-   pulldown = 0x01
-};
+   inline RegGPIO123& setOutMode(bitdefGPIO_MODE value)
+   {
+      GPIO.b.GPIO_OD = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIO123& setOutMode(unsigned short value)
+   {
+      GPIO.b.GPIO_OD = value;
+      return *this;
+   }
+   inline bitdefGPIO_MODE getOutMode() const
+   {
+      return static_cast<bitdefGPIO_MODE>(GPIO.b.GPIO_OD);
+   }
 
-enum class bitdefGPIO2_NOE : unsigned char
-{
-   enable = 0x00,
-   disable = 0x01
-};
+   inline RegGPIO123& setPulldown(bitdefGPIO_PD value)
+   {
+      GPIO.b.GPIO_PD = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIO123& setPulldown(unsigned short value)
+   {
+      GPIO.b.GPIO_PD = value;
+      return *this;
+   }
+   inline bitdefGPIO_PD isPulldown() const
+   {
+      return static_cast<bitdefGPIO_PD>(GPIO.b.GPIO_PD);
+   }
 
-enum class bitdefGPIO2_IE : unsigned char
-{
-   disable = 0x00,
-   enable = 0x01
-};
+   inline RegGPIO123& enableOutput(bitdefGPIO_NOE value)
+   {
+      GPIO.b.GPIO_NOE = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIO123& enableOutput(unsigned short value)
+   {
+      GPIO.b.GPIO_NOE = value;
+      return *this;
+   }
+   inline bitdefGPIO_NOE isOutputEnable() const
+   {
+      return static_cast<bitdefGPIO_NOE>(GPIO.b.GPIO_NOE);
+   }
 
-enum class bitdefGPIO3SEL : unsigned char
-{
-   GPIO = 0x00,
-   GPIOH1 = 0x01,
-   GPIOH2 = 0x02,
-   ADIRQ1 = 0x03,
-   ADIRQ2 = 0x04,
-   HSOSC = 0x05,
-   LSOSC = 0x06,
-   active_state = 0x07,
-   standby_state = 0x08,
-   lp_state = 0x09,
-   fuse_fet = 0x0A,
-   alarm2 = 0x0B,
-   mcu_int = 0x0C
-};
-
-enum class bitdefGPIO3_CHDRV : unsigned char
-{
-   drive_2mA = 0x00,
-   drive_4mA = 0x01
-};
-
-enum class bitdefGPIO3_OUT : unsigned char
-{
-   low = 0x00,
-   high = 0x01
-};
-
-enum class bitdefGPIO3_MODE : unsigned char
-{
-   push_pull = 0x00,
-   open_drain = 0x01
-};
-
-enum class bitdefGPIO3_PD : unsigned char
-{
-   no_pulldown = 0x00,
-   pulldown = 0x01
-};
-
-enum class bitdefGPIO3_NOE : unsigned char
-{
-   enable = 0x00,
-   disable = 0x01
-};
-
-enum class bitdefGPIO3_IE : unsigned char
-{
-   disable = 0x00,
-   enable = 0x01
+   inline RegGPIO123& enableInput(bitdefGPIO_IE value)
+   {
+      GPIO.b.GPIO_IE = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIO123& enableInput(unsigned short value)
+   {
+      GPIO.b.GPIO_IE = value;
+      return *this;
+   }
+   inline bitdefGPIO_IE isInputEnable() const
+   {
+      return static_cast<bitdefGPIO_IE>(GPIO.b.GPIO_IE);
+   }
+private:
+   GPIOId id;
+   Ka495xx_addr address;
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short GPIO_IE : 1;
+         unsigned short GPIO_NOE : 1;
+         unsigned short GPIO_PD : 1;
+         unsigned short GPIO_OD : 1;
+         unsigned short GPIO_OUT : 1;
+         unsigned short GPIO_CHDRV : 1;
+         unsigned short : 2;
+         unsigned short GPIOSEL : 4;
+         unsigned short : 4;
+      } b;
+   } GPIO;
 };
 
 enum class bitdefGPOH2_ALM_ST : unsigned char
