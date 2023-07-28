@@ -967,7 +967,7 @@ private:
    } reg;
 };
 
-enum class bitdefCVSEL : unsigned long
+enum class CELLS : unsigned long
 {
    CELL1  = 0x00000001,
    CELL2  = 0x00000002,
@@ -993,27 +993,27 @@ enum class bitdefCVSEL : unsigned long
    CELL22 = 0x00200000
 };
 
-bitdefCVSEL operator|(bitdefCVSEL a, bitdefCVSEL b)
+CELLS operator|(CELLS a, CELLS b)
 {
-   bitdefCVSEL ret;
-   ret = static_cast<bitdefCVSEL>(static_cast<unsigned long>(a) | static_cast<unsigned long>(b));
+   CELLS ret;
+   ret = static_cast<CELLS>(static_cast<unsigned long>(a) | static_cast<unsigned long>(b));
    return ret;
 }
 
-bitdefCVSEL operator~(bitdefCVSEL b)
+CELLS operator~(CELLS b)
 {
-   bitdefCVSEL ret;
+   CELLS ret;
    unsigned long inverted = static_cast<unsigned long>(b);
-   ret = static_cast<bitdefCVSEL>(~inverted);
+   ret = static_cast<CELLS>(~inverted);
    return ret;
 }
 
-bitdefCVSEL operator&(bitdefCVSEL a, bitdefCVSEL b)
+CELLS operator&(CELLS a, CELLS b)
 {
-   bitdefCVSEL ret;
+   CELLS ret;
    unsigned long hexA = static_cast<unsigned long>(a);
    unsigned long hexB = static_cast<unsigned long>(b);
-   ret = static_cast<bitdefCVSEL>(hexA & hexB);
+   ret = static_cast<CELLS>(hexA & hexB);
    return ret;
 }
 
@@ -1036,7 +1036,7 @@ public:
       return *this;
    }
 
-   inline RegCVSEL& select(bitdefCVSEL channel)
+   inline RegCVSEL& select(CELLS channel)
    {
       unsigned long lower = static_cast<unsigned long>(channel) & 0x00007FFF;
       unsigned long upper = (static_cast<unsigned long>(channel) & 0x003F8000) >> 15;
@@ -1044,7 +1044,7 @@ public:
       CVSEL2.hfword = upper;
       return *this;
    }
-   inline RegCVSEL& deselect(bitdefCVSEL channel)
+   inline RegCVSEL& deselect(CELLS channel)
    {
       unsigned long lower = static_cast<unsigned long>(channel) & 0x00007FFF;
       unsigned long upper = (static_cast<unsigned long>(channel) & 0x003F8000) >> 15;
@@ -2788,4 +2788,85 @@ private:
       } b;
    } ALARM3;
 };
+
+class RegCBSEL
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegCBSEL& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::CBSEL1, &CBSEL1.bytes[0]);
+      ifc->write(Ka495xx_addr::CBSEL2, &CBSEL2.bytes[0]);
+      return *this;
+   }
+   RegCBSEL& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::CBSEL1, &CBSEL1.bytes[0]);
+      ifc->read(Ka495xx_addr::CBSEL2, &CBSEL2.bytes[0]);
+      return *this;
+   }
+
+   inline RegCBSEL& select(CELLS channel)
+   {
+      unsigned long lower = static_cast<unsigned long>(channel) & 0x00007FFF;
+      unsigned long upper = (static_cast<unsigned long>(channel) & 0x003F8000) >> 15;
+      CBSEL1.hfword = lower;
+      CBSEL2.hfword = upper;
+      return *this;
+   }
+   inline RegCBSEL& deselect(CELLS channel)
+   {
+      unsigned long lower = static_cast<unsigned long>(channel) & 0x00007FFF;
+      unsigned long upper = (static_cast<unsigned long>(channel) & 0x003F8000) >> 15;
+      CBSEL1.hfword &= ~lower;
+      CBSEL2.hfword &= ~upper;
+      return *this;
+   }
+private:
+   Ka495xx_interface* ifc;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL1 : 1;
+         unsigned short CELL2 : 1;
+         unsigned short CELL3 : 1;
+         unsigned short CELL4 : 1;
+         unsigned short CELL5 : 1;
+         unsigned short CELL6 : 1;
+         unsigned short CELL7 : 1;
+         unsigned short CELL8 : 1;
+         unsigned short CELL9 : 1;
+         unsigned short CELL10 : 1;
+         unsigned short CELL11 : 1;
+         unsigned short CELL12 : 1;
+         unsigned short CELL13 : 1;
+         unsigned short CELL14 : 1;
+         unsigned short CELL15 : 1;
+         unsigned short CELL16 : 1;
+      } b;
+   } CBSEL1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL17 : 1;
+         unsigned short CELL18 : 1;
+         unsigned short CELL19 : 1;
+         unsigned short CELL20 : 1;
+         unsigned short CELL21 : 1;
+         unsigned short CELL22 : 1;
+         unsigned short : 10;
+      } b;
+   } CBSEL2;
+};
+
 #endif /* __KA495XX_SFR_H__ */
