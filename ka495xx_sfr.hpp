@@ -1899,6 +1899,162 @@ enum class bitdefUV_DLY : unsigned char
    delay_6000ms = 0x07
 };
 
+class OUVCTL
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   OUVCTL& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::OUVCTL1, &OUVCTL1.bytes[0]);
+      ifc->write(Ka495xx_addr::OUVCTL2, &OUVCTL2.bytes[0]);
+      return *this;
+   }
+   OUVCTL& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::OUVCTL1, &OUVCTL1.bytes[0]);
+      ifc->read(Ka495xx_addr::OUVCTL2, &OUVCTL2.bytes[0]);
+      return *this;
+   }
+
+   inline OUVCTL& setOCTH_SEL(bitdefOCTH_SEL value)
+   {
+      OUVCTL1.b.OCTH_SEL = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline OUVCTL& setOCTH_SEL(unsigned short value)
+   {
+      OUVCTL1.b.OCTH_SEL = value;
+      return *this;
+   }
+   inline bitdefOCTH_SEL getOCTH_SEL() const
+   {
+      return static_cast<bitdefOCTH_SEL>(OUVCTL1.b.OCTH_SEL);
+   }
+
+   inline OUVCTL& setOVTH(bitdefOVTH value)
+   {
+      OUVCTL1.b.OVTH = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline OUVCTL& setOVTH(unsigned short value)
+   {
+      OUVCTL1.b.OVTH = value;
+      return *this;
+   }
+   inline bitdefOVTH getOVTH() const
+   {
+      return static_cast<bitdefOVTH>(OUVCTL1.b.OVTH);
+   }
+
+   inline OUVCTL& setUVTH(bitdefUVTH value)
+   {
+      OUVCTL1.b.UVTH = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline OUVCTL& setUVTH(unsigned short value)
+   {
+      OUVCTL1.b.UVTH = value;
+      return *this;
+   }
+   inline bitdefUVTH getUVTH() const
+   {
+      return static_cast<bitdefUVTH>(OUVCTL1.b.UVTH);
+   }
+
+   inline OUVCTL& setOV_HYS(bitdefOV_HYS value)
+   {
+      OUVCTL2.b.OV_HYS = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline OUVCTL& setOV_HYS(unsigned short value)
+   {
+      OUVCTL2.b.OV_HYS = value;
+      return *this;
+   }
+   inline bitdefOV_HYS getOV_HYS() const
+   {
+      return static_cast<bitdefOV_HYS>(OUVCTL2.b.OV_HYS);
+   }
+
+   inline OUVCTL& setUV_HYS(bitdefUV_HYS value)
+   {
+      OUVCTL2.b.UV_HYS = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline OUVCTL& setUV_HYS(unsigned short value)
+   {
+      OUVCTL2.b.UV_HYS = value;
+      return *this;
+   }
+   inline bitdefUV_HYS getUV_HYS() const
+   {
+      return static_cast<bitdefUV_HYS>(OUVCTL2.b.UV_HYS);
+   }
+
+   inline OUVCTL& setOV_DLY(bitdefOV_DLY value)
+   {
+      OUVCTL2.b.OV_DLY = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline OUVCTL& setOV_DLY(unsigned short value)
+   {
+      OUVCTL2.b.OV_DLY = value;
+      return *this;
+   }
+   inline bitdefOV_DLY getOV_DLY() const
+   {
+      return static_cast<bitdefOV_DLY>(OUVCTL2.b.OV_DLY);
+   }
+
+   inline OUVCTL& setUV_DLY(bitdefUV_DLY value)
+   {
+      OUVCTL2.b.UV_DLY = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline OUVCTL& setUV_DLY(unsigned short value)
+   {
+      OUVCTL2.b.UV_DLY = value;
+      return *this;
+   }
+   inline bitdefUV_DLY getUV_DLY() const
+   {
+      return static_cast<bitdefUV_DLY>(OUVCTL2.b.UV_DLY);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short UVTH : 6;
+         unsigned short OVTH : 6;
+         unsigned short OCTH_SEL : 2;
+         unsigned short : 2;
+      } b;
+   } OUVCTL1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short UV_DLY : 3;
+         unsigned short : 1;
+         unsigned short OV_DLY : 3;
+         unsigned short : 1;
+         unsigned short UV_HYS : 3;
+         unsigned short : 1;
+         unsigned short OV_HYS : 3;
+         unsigned short : 1;
+      } b;
+   } OUVCTL2;
+};
+
 enum class bitdefCB_SET : unsigned char
 {
    off = 0x00,
