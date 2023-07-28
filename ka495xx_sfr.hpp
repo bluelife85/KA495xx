@@ -1233,7 +1233,7 @@ public:
       return *this;
    }
 
-   RegCVSEL& select(bitdefCVSEL channel)
+   inline RegCVSEL& select(bitdefCVSEL channel)
    {
       unsigned long lower = static_cast<unsigned long>(channel) & 0x00007FFF;
       unsigned long upper = (static_cast<unsigned long>(channel) & 0x003F8000) >> 15;
@@ -1241,7 +1241,7 @@ public:
       CVSEL2.hfword = upper;
       return *this;
    }
-   RegCVSEL& deselect(bitdefCVSEL channel)
+   inline RegCVSEL& deselect(bitdefCVSEL channel)
    {
       unsigned long lower = static_cast<unsigned long>(channel) & 0x00007FFF;
       unsigned long upper = (static_cast<unsigned long>(channel) & 0x003F8000) >> 15;
@@ -1350,12 +1350,12 @@ public:
       ifc->read(Ka495xx_addr::GVSEL, &reg.bytes[0]);
       return *this;
    }
-   RegGVSEL& select(bitdefGVSEL channel)
+   inline RegGVSEL& select(bitdefGVSEL channel)
    {
       reg.hfword = static_cast<unsigned short>(channel);
       return *this;
    }
-   RegGVSEL& deselect(bitdefGVSEL channel)
+   inline RegGVSEL& deselect(bitdefGVSEL channel)
    {
       reg.hfword &= ~static_cast<unsigned short>(channel);
       return *this;
@@ -1482,6 +1482,8 @@ enum class bitdefFUSEB_ENC2 : unsigned char
    enable = 0x01
 };
 
+enum class bitdefFUSE_BLOW : unsigned char;
+
 enum class bitdefDLY_FUSECUT : unsigned char
 {
    hold_30000ms = 0x00,
@@ -1500,6 +1502,235 @@ enum class bitdefDLY_FUSECUT : unsigned char
    hold_225000ms = 0x0D,
    hold_240000ms = 0x0E,
    hold_300000ms = 0x0F
+};
+
+class RegFUSE
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegFUSE& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::FUSE1, &FUSE1.bytes[0]);
+      ifc->write(Ka495xx_addr::FUSE2, &FUSE2.bytes[0]);
+      ifc->write(Ka495xx_addr::FUSE_BLOW, &FUSE_BLOW.bytes[0]);
+      return *this;
+   }
+   RegFUSE& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::FUSE1, &FUSE1.bytes[0]);
+      ifc->read(Ka495xx_addr::FUSE2, &FUSE2.bytes[0]);
+      ifc->read(Ka495xx_addr::FUSE_BLOW, &FUSE_BLOW.bytes[0]);
+      return *this;
+   }
+
+   inline RegFUSE& setDLY_FUSE_2V(bitdefDLY_FUSE_2V value)
+   {
+      FUSE1.b.DLY_FUSE_2V = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setDLY_FUSE_2V(unsigned short value)
+   {
+      FUSE1.b.DLY_FUSE_2V = value;
+      return *this;
+   }
+   inline bitdefDLY_FUSE_2V getDLY_FUSE_2V() const
+   {
+      return static_cast<bitdefDLY_FUSE_2V>(FUSE1.b.DLY_FUSE_2V);
+   }
+
+   inline RegFUSE& setDLY_FUSE_1V(bitdefDLY_FUSE_1V value)
+   {
+      FUSE1.b.DLY_FUSE_1V = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setDLY_FUSE_1V(unsigned short value)
+   {
+      FUSE1.b.DLY_FUSE_1V = value;
+      return *this;
+   }
+   inline bitdefDLY_FUSE_1V getDLY_FUSE_1V() const
+   {
+      return static_cast<bitdefDLY_FUSE_1V>(FUSE1.b.DLY_FUSE_1C);
+   }
+
+   inline RegFUSE& setFUSEB_ENV(bitdefFUSEB_ENV value)
+   {
+      FUSE1.b.FUSEB_ENV = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setFUSEB_ENV(unsigned short value)
+   {
+      FUSE1.b.FUSEB_ENV = value;
+      return *this;
+   }
+   inline bitdefFUSEB_ENV getFUSEB_ENV() const
+   {
+      return static_cast<bitdefFUSEB_ENV>(FUSE1.b.FUSEB_ENV);
+   }
+
+   inline RegFUSE& setDLY_FUSE_2C(bitdefDLY_FUSE_2C value)
+   {
+      FUSE1.b.DLY_FUSE_2C = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setDLY_FUSE_2C(unsigned short value)
+   {
+      FUSE1.b.DLY_FUSE_2C = value;
+      return *this;
+   }
+   inline bitdefDLY_FUSE_2C getDLY_FUSE_2C() const
+   {
+      return static_cast<bitdefDLY_FUSE_2C>(FUSE1.b.DLY_FUSE_2C);
+   }
+
+   inline RegFUSE& setDLY_FUSE_1C(bitdefDLY_FUSE_1C value)
+   {
+      FUSE1.b.DLY_FUSE_1C = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setDLY_FUSE_1C(unsigned short value)
+   {
+      FUSE1.b.DLY_FUSE_1C = value;
+      return *this;
+   }
+   inline bitdefDLY_FUSE_1C getDLY_FUSE_1C() const
+   {
+      return static_cast<bitdefDLY_FUSE_1C>(FUSE1.b.DLY_FUSE_1C);
+   }
+
+   inline RegFUSE& setFUSEB_ENC(bitdefFUSEB_ENC value)
+   {
+      FUSE1.b.FUSEB_ENC = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setFUSEB_ENC(unsigned short value)
+   {
+      FUSE1.b.FUSEB_ENC = value;
+      return *this;
+   }
+   inline bitdefFUSEB_ENC getFUSEB_ENC() const
+   {
+      return static_cast<bitdefFUSEB_ENC>(FUSE1.b.FUSEB_ENC);
+   }
+
+   inline RegFUSE& setOVTH2_SEL(bitdefOVTH2_SEL value)
+   {
+      FUSE2.b.OVTH2_SEL = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setOVTH2_SEL(unsigned short value)
+   {
+      FUSE2.b.OVTH2_SEL = value;
+      return *this;
+   }
+   inline bitdefOVTH2_SEL getOVTH2_SEL() const
+   {
+      return static_cast<bitdefOVTH2_SEL>(FUSE2.b.OVTH2_SEL);
+   }
+   
+   inline RegFUSE& setFUSEB_ENV2(bitdefFUSEB_ENV2 value)
+   {
+      FUSE2.b.FUSEB_ENV2 = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setFUSEB_ENV2(unsigned short value)
+   {
+      FUSE2.b.FUSEB_ENV2 = value;
+      return *this;
+   }
+   inline bitdefFUSEB_ENV2 getFUSEB_ENV2() const
+   {
+      return static_cast<bitdefFUSEB_ENV2>(FUSE2.b.FUSEB_ENV2);
+   }
+
+   inline RegFUSE& setFUSEB_ENC2(bitdefFUSEB_ENC2 value)
+   {
+      FUSE2.b.FUSEB_ENC2 = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setFUSEB_ENC2(unsigned short value)
+   {
+      FUSE2.b.FUSEB_ENC2 = value;
+      return *this;
+   }
+   inline bitdefFUSEB_ENC2 getFUSEB_ENC2() const
+   {
+      return static_cast<bitdefFUSEB_ENC2>(FUSE2.b.FUSEB_ENC2);
+   }
+
+   inline RegFUSE& setDLY_FUSECUT(bitdefDLY_FUSECUT value)
+   {
+      FUSE2.b.DLY_FUSECUT = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setDLY_FUSECUT(unsigned short value)
+   {
+      FUSE2.b.DLY_FUSECUT = value;
+      return *this;
+   }
+   inline bitdefDLY_FUSECUT getDLY_FUSECUT() const
+   {
+      return static_cast<bitdefDLY_FUSECUT>(FUSE2.b.DLY_FUSECUT);
+   }
+
+   inline RegFUSE& setFUSE_BLOW(bitdefFUSE_BLOW value)
+   {
+      FUSE_BLOW.b.FUSE_BLOW = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegFUSE& setFUSE_BLOW(unsigned short value)
+   {
+      FUSE_BLOW.b.FUSE_BLOW = value;
+      return *this;
+   }
+   inline bitdefFUSE_BLOW getFUSE_BLOW() const
+   {
+      return static_cast<bitdefFUSE_BLOW>(FUSE_BLOW.b.FUSE_BLOW);
+   }
+private:
+   Ka495xx_interface* ifc;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short FUSEB_ENC : 1;
+         unsigned short DLY_FUSE_1C : 3;
+         unsigned short DLY_FUSE_2C : 4;
+         unsigned short FUSEB_ENV : 1;
+         unsigned short DLY_FUSE_1V : 3;
+         unsigned short DLY_FUSE_2V : 4;
+      } b;
+   } FUSE1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short DLY_FUSECUT : 4;
+         unsigned short FUSEB_ENC2 : 1;
+         unsigned short FUSEB_ENV2 : 1;
+         unsigned short OVTH2_SEL : 2;
+         unsigned short : 8;
+      } b;
+   } FUSE2;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short FUSE_BLOW : 8;
+         unsigned short : 8;
+      } b;
+   } FUSE_BLOW;
 };
 
 enum class bitdefOCTH_SEL : unsigned char
