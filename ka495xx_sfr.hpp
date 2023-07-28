@@ -352,11 +352,6 @@ public:
       reg.b.ADC_CONT = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegPWR_CTRL& setADC_CONT(unsigned short value)
-   {
-      reg.b.ADC_CONT = value;
-      return *this;
-   }
    inline bitdefADC_CONT getADC_CONT() const
    {
       return static_cast<bitdefADC_CONT>(reg.b.ADC_CONT);
@@ -366,11 +361,6 @@ public:
    inline RegPWR_CTRL& setINTM_TIM(bitdefINTM_TIM value)
    {
       reg.b.INTM_TIM = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegPWR_CTRL& setINTM_TIM(unsigned short value)
-   {
-      reg.b.INTM_TIM = value;
       return *this;
    }
    inline bitdefINTM_TIM getINTM_TIM() const
@@ -384,11 +374,6 @@ public:
       reg.b.INTM_SEL = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegPWR_CTRL& setINTM_SEL(unsigned short value)
-   {
-      reg.b.INTM_SEL = value;
-      return *this;
-   }
    inline bitdefINTM_SEL getINTM_SEL() const
    {
       return static_cast<bitdefINTM_SEL>(reg.b.INTM_SEL);
@@ -398,11 +383,6 @@ public:
    inline RegPWR_CTRL& setLDM_SLP_EN(bitdefLDM_SLP_EN value)
    {
       reg.b.LDM_SLP_EN = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegPWR_CTRL& setLDM_SLP_EN(unsigned short value)
-   {
-      reg.b.LDM_SLP_EN = value;
       return *this;
    }
    inline bitdefLDM_SLP_EN getLDM_SLP_EN() const
@@ -416,11 +396,6 @@ public:
       reg.b.LDM_SLP_EN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegPWR_CTRL& setVPC_SLP_EN(unsigned short value)
-   {
-      reg.b.VPC_SLP_EN = value;
-      return *this;
-   }
    inline bitdefVPC_SLP_EN getVPC_SLP_EN() const
    {
       return static_cast<bitdefVPC_SLP_EN>(reg.b.VPC_SLP_EN);
@@ -430,11 +405,6 @@ public:
    inline RegPWR_CTRL& setLDM_STB_EN(bitdefLDM_STB_EN value)
    {
       reg.b.LDM_STB_EN = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegPWR_CTRL& setLDM_STB_EN(unsigned short value)
-   {
-      reg.b.LDM_STB_EN = value;
       return *this;
    }
    inline bitdefLDM_STB_EN getLDM_STB_EN() const
@@ -448,11 +418,6 @@ public:
       reg.b.VPC_STB_EN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegPWR_CTRL& setVPC_STB_EN(unsigned short value)
-   {
-      reg.b.VPC_STB_EN = value;
-      return *this;
-   }
    inline bitdefVPC_STB_EN getVPC_STB_EN() const
    {
       return static_cast<bitdefVPC_STB_EN>(reg.b.VPC_STB_EN);
@@ -461,11 +426,6 @@ public:
    inline RegPWR_CTRL& setAUTO_TIM(bitdefAUTO_TIM value)
    {
       reg.b.AUTO_TIM = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegPWR_CTRL& setAUTO_TIM(unsigned short value)
-   {
-      reg.b.AUTO_TIM = value;
       return *this;
    }
    inline bitdefAUTO_TIM getAUTO_TIM() const
@@ -479,11 +439,6 @@ public:
       reg.b.MSET_STB = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegPWR_CTRL& setMSET_STB(unsigned short value)
-   {
-      reg.b.MSET_STB = value;
-      return *this;
-   }
    inline bitdefMSET_STB getMSET_STB() const
    {
       return static_cast<bitdefMSET_STB>(reg.b.MSET_STB);
@@ -495,11 +450,6 @@ public:
       reg.b.MSET_STB = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegPWR_CTRL& setMSET_LP(unsigned short value)
-   {
-      reg.b.MSET_LP = value;
-      return *this;
-   }
    inline bitdefMSET_LP getMSET_LP() const
    {
       return static_cast<bitdefMSET_LP>(reg.b.MSET_LP);
@@ -507,11 +457,6 @@ public:
 
    // bit MSET_SLP
    inline RegPWR_CTRL& setMSET_SLP(bitdefMSET_SLP value)
-   {
-      reg.b.MSET_SLP = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegPWR_CTRL& setMSET_SLP(unsigned short value)
    {
       reg.b.MSET_SLP = static_cast<unsigned short>(value);
       return *this;
@@ -527,11 +472,6 @@ public:
       reg.b.MSET_SHDN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegPWR_CTRL& setMSET_SHDN(unsigned short value)
-   {
-      reg.b.MSET_SHDN = value;
-      return *this;
-   }
    inline bitdefMSET_SHDN getMSET_SHDN() const
    {
       return static_cast<bitdefMSET_SHDN>(reg.b.MSET_SHDN);
@@ -541,11 +481,6 @@ public:
    inline RegPWR_CTRL& setNPD_RST(bitdefNPD_RST value)
    {
       reg.b.MSET_SHDN = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegPWR_CTRL& setNPD_RST(unsigned short value)
-   {
-      reg.b.NPD_RST = value;
       return *this;
    }
 private:
@@ -637,11 +572,6 @@ public:
       reg.b.INT5_EN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegINT_EN& setINT5_EN(unsigned short value)
-   {
-      reg.b.INT5_EN = value;
-      return *this;
-   }
    inline bitdefINT4_EN getINT4_EN() const
    {
       return static_cast<bitdefINT4_EN>(reg.b.INT4_EN);
@@ -650,11 +580,6 @@ public:
    inline RegINT_EN& setINT4_EN(bitdefINT4_EN value)
    {
       reg.b.INT4_EN = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegINT_EN& setINT4_EN(unsigned short value)
-   {
-      reg.b.INT4_EN = value;
       return *this;
    }
    inline bitdefINT4_EN getINT4_EN() const
@@ -667,11 +592,6 @@ public:
       reg.b.INT3_EN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegINT_EN& setINT3_EN(unsigned short value)
-   {
-      reg.b.INT3_EN = value;
-      return *this;
-   }
    inline bitdefINT3_EN getINT3_EN() const
    {
       return static_cast<bitdefINT3_EN>(reg.b.INT3_EN);
@@ -680,11 +600,6 @@ public:
    inline RegINT_EN& setINT2_EN(bitdefINT2_EN value)
    {
       reg.b.INT2_EN = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegINT_EN& setINT2_EN(unsigned short value)
-   {
-      reg.b.INT2_EN = value;
       return *this;
    }
    inline bitdefINT2_EN getINT2_EN() const
@@ -697,11 +612,6 @@ public:
       reg.b.INT1_EN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegINT_EN& setINT1_EN(unsigned short value)
-   {
-      reg.b.INT1_EN = value;
-      return *this;
-   }
    inline bitdefINT1_EN getINT1_EN() const
    {
       return static_cast<bitdefINT1_EN>(reg.b.INT1_EN);
@@ -712,13 +622,6 @@ public:
       reg.b.CHG_DIS_CLR = static_cast<unsigned short>(value);
       return *this;
    }
-
-   inline RegINT_EN& setCHG_DIS_CLR(unsigned short value)
-   {
-      reg.b.CHG_DIS_CLR = value;
-      return *this;
-   }
-
    inline bitdefCHG_DIS_CLR getCHG_DIS_CLR() const
    {
       return static_cast<bitdefCHG_DIS_CLR>(reg.b.CHG_DIS_CLR);
@@ -727,11 +630,6 @@ public:
    inline RegINT_EN& setREG_EXT_EN(bitdefREGEXT_EN value)
    {
       reg.b.REG_EXT_EN = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegINT_EN& setREG_EXT_EN(unsigned short value)
-   {
-      reg.b.REG_EXT_EN = value;
       return *this;
    }
    inline bitdefREGEXT_EN getREG_EXT_EN() const
@@ -744,11 +642,6 @@ public:
       reg.b.STB_REG_EXT_LPEN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegINT_EN& setSTB_REG_EXT_LPEN(unsigned short value)
-   {
-      reg.b.STB_REG_EXT_LPEN = value;
-      return *this;
-   }
    inline bitdefSTB_REGEXT_LPEN getSTB_REG_EXT_LPEN() const
    {
       return static_cast<bitdefSTB_REGEXT_LPEN>(reg.b.STB_REG_EXT_LPEN);
@@ -757,11 +650,6 @@ public:
    inline RegINT_EN& setSLP_REG_EXT_LPEN(bitdefSLP_REGEXT_LPEN value)
    {
       reg.b.SLP_REG_EXT_LPEN = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegINT_EN& setSLP_REG_EXT_LPEN(unsigned short value)
-   {
-      reg.b.SLP_REG_EXT_LPEN = value;
       return *this;
    }
    inline bitdefSLP_REGEXT_LPEN getSLP_REG_EXT_LPEN() const
@@ -774,11 +662,6 @@ public:
       reg.b.INTM_REG_EXT_LPEN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegINT_EN& setINTM_REG_EXT_LPEN(unsigned short value)
-   {
-      reg.b.INTM_REG_EXT_LPEN = value;
-      return *this;
-   }
    inline bitdefINTM_REGEXT_LPEN getINTM_REG_EXT_LPEN() const
    {
       return static_cast<bitdefINTM_REGEXT_LPEN>(reg.b.INTM_REG_EXT_LPEN);
@@ -787,11 +670,6 @@ public:
    inline RegINT_EN& setSTB_VDD55_LPEN(bitdefSTB_VDD55_LPEN value)
    {
       reg.b.STB_VDD55_LPEN = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegINT_EN& setSTB_VDD55_LPEN(unsigned short value)
-   {
-      reg.b.STB_VDD55_LPEN = value;
       return *this;
    }
    inline bitdefSTB_VDD55_LPEN getSTB_VDD55_LPEN() const
@@ -804,11 +682,6 @@ public:
       reg.b.SLP_VDD55_LPEN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegINT_EN& setSLP_VDD55_LPEN(unsigned short value)
-   {
-      reg.b.SLP_VDD55_LPEN = value;
-      return *this;
-   }
    inline bitdefSLP_VDD55_LPEN getSLP_VDD55_LPEN() const
    {
       return static_cast<bitdefSLP_VDD55_LPEN>(reg.b.SLP_VDD55_LPEN);
@@ -817,11 +690,6 @@ public:
    inline RegINT_EN& setINTM_VDD55_LPEN(bitdefINTM_VDD55_LPEN value)
    {
       reg.b.INTM_VDD55_LPEN = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegINT_EN& setINTM_VDD55_LPEN(unsigned short value)
-   {
-      reg.b.INTM_VDD55_LPEN = value;
       return *this;
    }
    inline bitdefINTM_VDD55_LPEN getINTM_VDD55_LPEN() const
@@ -884,11 +752,6 @@ public:
       reg.b.WDT_STB_EN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegSPIWD_CTL& setWDT_STB_EN(unsigned short value)
-   {
-      reg.b.WDT_STB_EN = value;
-      return *this;
-   }
    inline bitdefWDT_STB_EN getWDT_STB_EN() const
    {
       return static_cast<bitdefWDT_STB_EN>(reg.b.WDT_STB_EN);
@@ -899,11 +762,6 @@ public:
       reg.b.WDT_REG_EXT_OFF = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegSPIWD_CTL& setWDT_REGEXT_OFF(unsigned short value)
-   {
-      reg.b.WDT_REG_EXT_OFF = value;
-      return *this;
-   }
    inline bitdefWDT_REGEXT_OFF getWDT_REGEXT_OFF() const
    {
       return static_cast<bitdefWDT_REGEXT_OFF>(reg.b.WDT_REG_EXT_OFF);
@@ -912,11 +770,6 @@ public:
    inline RegSPIWD_CTL& setCOMTIMON(bitdefCOMTIMON value)
    {
       reg.b.COMTIMON = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegSPIWD_CTL& setCOMTIMON(unsigned short value)
-   {
-      reg.b.COMTIMON = value;
       return *this;
    }
    inline bitdefCOMTIMON getCOMTIMON() const
@@ -996,11 +849,6 @@ public:
       reg.b.FDRV_ALM_SD = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFDRV_CTRL& setFDRV_ALM_SD(unsigned short value)
-   {
-      reg.b.FDRV_ALM_SD = value;
-      return *this;
-   }
    inline bitdefFDRV_ALM_SD getFDRV_ALM_SD() const
    {
       return static_cast<bitdefFDRV_ALM_SD>(reg.b.FDRV_ALM_SD);
@@ -1009,11 +857,6 @@ public:
    inline RegFDRV_CTRL& setFDRV_ALM_RCV(bitdefFDRV_ALM_RCV value)
    {
       reg.b.FDRV_ALM_RCV = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegFDRV_CTRL& setFDRV_ALM_RCV(unsigned short value)
-   {
-      reg.b.FDRV_ALM_RCV = value;
       return *this;
    }
    inline bitdefFDRV_ALM_RCV getFDRV_ALM_RCV() const
@@ -1026,11 +869,6 @@ public:
       reg.b.FDRV_ALM_CLR = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFDRV_CTRL& setFDRV_ALM_CLR(unsigned short value)
-   {
-      reg.b.FDRV_ALM_CLR = value;
-      return *this;
-   }
    inline bitdefFDRV_ALM_CLR getFDRV_ALM_CLR() const
    {
       return static_cast<bitdefFDRV_ALM_CLR>(reg.b.FDRV_ALM_CLR);
@@ -1039,11 +877,6 @@ public:
    inline RegFDRV_CTRL& setNPD_FDRV(bitdefNPD_FDRV value)
    {
       reg.b.NPD_FDRV = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegFDRV_CTRL& setNPD_FDRV(unsigned short value)
-   {
-      reg.b.NPD_FDRV = value;
       return *this;
    }
    inline bitdefNPD_FDRV getNPD_FDRV() const
@@ -1056,11 +889,6 @@ public:
       reg.b.FDRV_SEL_CLK = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFDRV_CTRL& setFDRV_SEL_CLK(unsigned short value)
-   {
-      reg.b.FDRV_SEL_CLK = value;
-      return *this;
-   }
    inline bitdefFDRV_SEL_CLK getFDRV_SEL_CLK() const
    {
       return static_cast<bitdefFDRV_SEL_CLK>(reg.b.FDRV_SEL_CLK);
@@ -1069,11 +897,6 @@ public:
    inline RegFDRV_CTRL& setFDRV_CHG_FET(bitdefFDRV_CHG_FET value)
    {
       reg.b.FDRV_CHG_FET = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegFDRV_CTRL& setFDRV_CHG_FET(unsigned short value)
-   {
-      reg.b.FDRV_CHG_FET = value;
       return *this;
    }
    inline bitdefFDRV_CHG_FET getFDRV_CHG_FET() const
@@ -1086,11 +909,6 @@ public:
       reg.b.FDRV_DIS_FET = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFDRV_CTRL& setFDRV_DIS_FET(unsigned short value)
-   {
-      reg.b.FDRV_DIS_FET = value;
-      return *this;
-   }
    inline bitdefFDRV_DIS_FET getFDRV_DIS_FET() const
    {
       return static_cast<bitdefFDRV_DIS_FET>(reg.b.FDRV_DIS_FET);
@@ -1099,11 +917,6 @@ public:
    inline RegFDRV_CTRL& setFDRV_STBY(bitdefFDRV_STBY value)
    {
       reg.b.FDRV_STBY = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegFDRV_CTRL& setFDRV_STBY(unsigned short value)
-   {
-      reg.b.FDRV_STBY = value;
       return *this;
    }
    inline bitdefFDRV_STBY getFDRV_STBY() const
@@ -1116,11 +929,6 @@ public:
       reg.b.FDRV_LEVEL = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFDRV_CTRL& setFDRV_LEVEL(unsigned short value)
-   {
-      reg.b.FDRV_LEVEL = value;
-      return *this;
-   }
    inline bitdefFDRV_LEVEL getFDRV_LEVEL() const
    {
       return static_cast<bitdefFDRV_LEVEL>(reg.b.FDRV_LEVEL);
@@ -1129,11 +937,6 @@ public:
    inline RegFDRV_CTRL& setFDRV_OUV_CTL(bitdefFDRV_OUVCTL value)
    {
       reg.b.FDRV_OUV_CTL = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegFDRV_CTRL& setFDRV_OUV_CTL(unsigned short value)
-   {
-      reg.b.FDRV_OUV_CTL = value;
       return *this;
    }
    inline bitdefFDRV_OUVCTL getFDRV_OUV_CTL() const
@@ -1530,11 +1333,6 @@ public:
       FUSE1.b.DLY_FUSE_2V = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFUSE& setDLY_FUSE_2V(unsigned short value)
-   {
-      FUSE1.b.DLY_FUSE_2V = value;
-      return *this;
-   }
    inline bitdefDLY_FUSE_2V getDLY_FUSE_2V() const
    {
       return static_cast<bitdefDLY_FUSE_2V>(FUSE1.b.DLY_FUSE_2V);
@@ -1543,11 +1341,6 @@ public:
    inline RegFUSE& setDLY_FUSE_1V(bitdefDLY_FUSE_1V value)
    {
       FUSE1.b.DLY_FUSE_1V = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegFUSE& setDLY_FUSE_1V(unsigned short value)
-   {
-      FUSE1.b.DLY_FUSE_1V = value;
       return *this;
    }
    inline bitdefDLY_FUSE_1V getDLY_FUSE_1V() const
@@ -1560,11 +1353,6 @@ public:
       FUSE1.b.FUSEB_ENV = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFUSE& setFUSEB_ENV(unsigned short value)
-   {
-      FUSE1.b.FUSEB_ENV = value;
-      return *this;
-   }
    inline bitdefFUSEB_ENV getFUSEB_ENV() const
    {
       return static_cast<bitdefFUSEB_ENV>(FUSE1.b.FUSEB_ENV);
@@ -1573,11 +1361,6 @@ public:
    inline RegFUSE& setDLY_FUSE_2C(bitdefDLY_FUSE_2C value)
    {
       FUSE1.b.DLY_FUSE_2C = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegFUSE& setDLY_FUSE_2C(unsigned short value)
-   {
-      FUSE1.b.DLY_FUSE_2C = value;
       return *this;
    }
    inline bitdefDLY_FUSE_2C getDLY_FUSE_2C() const
@@ -1590,11 +1373,6 @@ public:
       FUSE1.b.DLY_FUSE_1C = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFUSE& setDLY_FUSE_1C(unsigned short value)
-   {
-      FUSE1.b.DLY_FUSE_1C = value;
-      return *this;
-   }
    inline bitdefDLY_FUSE_1C getDLY_FUSE_1C() const
    {
       return static_cast<bitdefDLY_FUSE_1C>(FUSE1.b.DLY_FUSE_1C);
@@ -1603,11 +1381,6 @@ public:
    inline RegFUSE& setFUSEB_ENC(bitdefFUSEB_ENC value)
    {
       FUSE1.b.FUSEB_ENC = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegFUSE& setFUSEB_ENC(unsigned short value)
-   {
-      FUSE1.b.FUSEB_ENC = value;
       return *this;
    }
    inline bitdefFUSEB_ENC getFUSEB_ENC() const
@@ -1620,11 +1393,6 @@ public:
       FUSE2.b.OVTH2_SEL = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFUSE& setOVTH2_SEL(unsigned short value)
-   {
-      FUSE2.b.OVTH2_SEL = value;
-      return *this;
-   }
    inline bitdefOVTH2_SEL getOVTH2_SEL() const
    {
       return static_cast<bitdefOVTH2_SEL>(FUSE2.b.OVTH2_SEL);
@@ -1633,11 +1401,6 @@ public:
    inline RegFUSE& setFUSEB_ENV2(bitdefFUSEB_ENV2 value)
    {
       FUSE2.b.FUSEB_ENV2 = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegFUSE& setFUSEB_ENV2(unsigned short value)
-   {
-      FUSE2.b.FUSEB_ENV2 = value;
       return *this;
    }
    inline bitdefFUSEB_ENV2 getFUSEB_ENV2() const
@@ -1650,11 +1413,6 @@ public:
       FUSE2.b.FUSEB_ENC2 = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFUSE& setFUSEB_ENC2(unsigned short value)
-   {
-      FUSE2.b.FUSEB_ENC2 = value;
-      return *this;
-   }
    inline bitdefFUSEB_ENC2 getFUSEB_ENC2() const
    {
       return static_cast<bitdefFUSEB_ENC2>(FUSE2.b.FUSEB_ENC2);
@@ -1665,11 +1423,6 @@ public:
       FUSE2.b.DLY_FUSECUT = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegFUSE& setDLY_FUSECUT(unsigned short value)
-   {
-      FUSE2.b.DLY_FUSECUT = value;
-      return *this;
-   }
    inline bitdefDLY_FUSECUT getDLY_FUSECUT() const
    {
       return static_cast<bitdefDLY_FUSECUT>(FUSE2.b.DLY_FUSECUT);
@@ -1678,11 +1431,6 @@ public:
    inline RegFUSE& setFUSE_BLOW(bitdefFUSE_BLOW value)
    {
       FUSE_BLOW.b.FUSE_BLOW = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegFUSE& setFUSE_BLOW(unsigned short value)
-   {
-      FUSE_BLOW.b.FUSE_BLOW = value;
       return *this;
    }
    inline bitdefFUSE_BLOW getFUSE_BLOW() const
@@ -1923,11 +1671,6 @@ public:
       OUVCTL1.b.OCTH_SEL = static_cast<unsigned short>(value);
       return *this;
    }
-   inline OUVCTL& setOCTH_SEL(unsigned short value)
-   {
-      OUVCTL1.b.OCTH_SEL = value;
-      return *this;
-   }
    inline bitdefOCTH_SEL getOCTH_SEL() const
    {
       return static_cast<bitdefOCTH_SEL>(OUVCTL1.b.OCTH_SEL);
@@ -1936,11 +1679,6 @@ public:
    inline OUVCTL& setOVTH(bitdefOVTH value)
    {
       OUVCTL1.b.OVTH = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline OUVCTL& setOVTH(unsigned short value)
-   {
-      OUVCTL1.b.OVTH = value;
       return *this;
    }
    inline bitdefOVTH getOVTH() const
@@ -1953,11 +1691,6 @@ public:
       OUVCTL1.b.UVTH = static_cast<unsigned short>(value);
       return *this;
    }
-   inline OUVCTL& setUVTH(unsigned short value)
-   {
-      OUVCTL1.b.UVTH = value;
-      return *this;
-   }
    inline bitdefUVTH getUVTH() const
    {
       return static_cast<bitdefUVTH>(OUVCTL1.b.UVTH);
@@ -1966,11 +1699,6 @@ public:
    inline OUVCTL& setOV_HYS(bitdefOV_HYS value)
    {
       OUVCTL2.b.OV_HYS = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline OUVCTL& setOV_HYS(unsigned short value)
-   {
-      OUVCTL2.b.OV_HYS = value;
       return *this;
    }
    inline bitdefOV_HYS getOV_HYS() const
@@ -1983,11 +1711,6 @@ public:
       OUVCTL2.b.UV_HYS = static_cast<unsigned short>(value);
       return *this;
    }
-   inline OUVCTL& setUV_HYS(unsigned short value)
-   {
-      OUVCTL2.b.UV_HYS = value;
-      return *this;
-   }
    inline bitdefUV_HYS getUV_HYS() const
    {
       return static_cast<bitdefUV_HYS>(OUVCTL2.b.UV_HYS);
@@ -1998,11 +1721,6 @@ public:
       OUVCTL2.b.OV_DLY = static_cast<unsigned short>(value);
       return *this;
    }
-   inline OUVCTL& setOV_DLY(unsigned short value)
-   {
-      OUVCTL2.b.OV_DLY = value;
-      return *this;
-   }
    inline bitdefOV_DLY getOV_DLY() const
    {
       return static_cast<bitdefOV_DLY>(OUVCTL2.b.OV_DLY);
@@ -2011,11 +1729,6 @@ public:
    inline OUVCTL& setUV_DLY(bitdefUV_DLY value)
    {
       OUVCTL2.b.UV_DLY = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline OUVCTL& setUV_DLY(unsigned short value)
-   {
-      OUVCTL2.b.UV_DLY = value;
       return *this;
    }
    inline bitdefUV_DLY getUV_DLY() const
@@ -2119,11 +1832,6 @@ public:
       OPMODE.b.CB_SET = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegOPMODE& setCB_SET(unsigned short value)
-   {
-      OPMODE.b.CB_SET = value;
-      return *this;
-   }
    inline bitdefCB_SET getCB_SET() const
    {
       return static_cast<bitdefCB_SET>(OPMODE.b.CB_SET);
@@ -2132,11 +1840,6 @@ public:
    inline RegOPMODE& setUVMSK(bitdefUVMSK value)
    {
       OPMODE.b.UV_MSK = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegOPMODE& setUVMSK(unsigned short value)
-   {
-      OPMODE.b.UV_MSK = value;
       return *this;
    }
    inline bitdefUVMSK getUVMSK() const
@@ -2149,11 +1852,6 @@ public:
       OPMODE.b.OV_MSK = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegOPMODE& setOVMSK(unsigned short value)
-   {
-      OPMODE.b.OV_MSK = value;
-      return *this;
-   }
    inline bitdefOVMSK getOVMSK() const
    {
       return static_cast<bitdefOVMSK>(OPMODE.b.OV_MSK);
@@ -2162,11 +1860,6 @@ public:
    inline RegOPMODE& setADC_TRG(bitdefADC_TRG value)
    {
       OPMODE.b.ADC_TRG = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegOPMODE& setADC_TRG(unsigned short value)
-   {
-      OPMODE.b.ADC_TRG = value;
       return *this;
    }
    inline bitdefADC_TRG getADC_TRG() const
@@ -2179,11 +1872,6 @@ public:
       OPMODE.b.ADIL_LATCH = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegOPMODE& setADIL_LATCH(unsigned short value)
-   {
-      OPMODE.b.ADIL_LATCH = value;
-      return *this;
-   }
    inline bitdefADIL_LATCH getADIL_LATCH() const
    {
       return static_cast<bitdefADIL_LATCH>(OPMODE.b.ADIL_LATCH);
@@ -2194,11 +1882,6 @@ public:
       OPMODE.b.ADIH_LATCH = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegOPMODE& setADIH_LATCH(unsigned short value)
-   {
-      OPMODE.b.ADIH_LATCH = value;
-      return *this;
-   }
    inline bitdefADIH_LATCH getADIH_LATCH() const
    {
       return static_cast<bitdefADIH_LATCH>(OPMODE.b.ADIH_LATCH);
@@ -2207,11 +1890,6 @@ public:
    inline RegOPMODE& setADV_LATCH(bitdefADV_LATCH value)
    {
       OPMODE.b.ADV_LATCH = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegOPMODE& setADV_LATCH(unsigned short value)
-   {
-      OPMODE.b.ADV_LATCH = value;
       return *this;
    }
    inline bitdefADV_LATCH getADV_LATCH() const
@@ -2338,11 +2016,6 @@ public:
       GPIO.b.GPIOSEL = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegGPIO123& setGPIOSEL(unsigned short value)
-   {
-      GPIO.b.GPIOSEL = value;
-      return *this;
-   }
    inline bitdefGPIOSEL getGPIOSEL() const
    {
       return static_cast<bitdefGPIOSEL>(GPIO.b.GPIOSEL);
@@ -2351,11 +2024,6 @@ public:
    inline RegGPIO123& setCHDRV(bitdefGPIO_CHDRV value)
    {
       GPIO.b.GPIO_CHDRV = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegGPIO123& setCHDRV(unsigned short value)
-   {
-      GPIO.b.GPIO_CHDRV = value;
       return *this;
    }
    inline bitdefGPIO_CHDRV getCHDRV() const
@@ -2368,11 +2036,6 @@ public:
       GPIO.b.GPIO_OUT = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegGPIO123& setOutput(unsigned short value)
-   {
-      GPIO.b.GPIO_OUT = value;
-      return *this;
-   }
    inline bitdefGPIO_OUT getOutState() const
    {
       return static_cast<bitdefGPIO_OUT>(GPIO.b.GPIO_OUT);
@@ -2381,11 +2044,6 @@ public:
    inline RegGPIO123& setOutMode(bitdefGPIO_MODE value)
    {
       GPIO.b.GPIO_OD = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegGPIO123& setOutMode(unsigned short value)
-   {
-      GPIO.b.GPIO_OD = value;
       return *this;
    }
    inline bitdefGPIO_MODE getOutMode() const
@@ -2398,11 +2056,6 @@ public:
       GPIO.b.GPIO_PD = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegGPIO123& setPulldown(unsigned short value)
-   {
-      GPIO.b.GPIO_PD = value;
-      return *this;
-   }
    inline bitdefGPIO_PD isPulldown() const
    {
       return static_cast<bitdefGPIO_PD>(GPIO.b.GPIO_PD);
@@ -2413,11 +2066,6 @@ public:
       GPIO.b.GPIO_NOE = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegGPIO123& enableOutput(unsigned short value)
-   {
-      GPIO.b.GPIO_NOE = value;
-      return *this;
-   }
    inline bitdefGPIO_NOE isOutputEnable() const
    {
       return static_cast<bitdefGPIO_NOE>(GPIO.b.GPIO_NOE);
@@ -2426,11 +2074,6 @@ public:
    inline RegGPIO123& enableInput(bitdefGPIO_IE value)
    {
       GPIO.b.GPIO_IE = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegGPIO123& enableInput(unsigned short value)
-   {
-      GPIO.b.GPIO_IE = value;
       return *this;
    }
    inline bitdefGPIO_IE isInputEnable() const
@@ -2512,11 +2155,6 @@ public:
       GPOH.b.GPIOH2_ALM_ST = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegGPIOHV& setGPOH2_ALM_ST(unsigned short value)
-   {
-      GPOH.b.GPIOH2_ALM_ST = value;
-      return *this;
-   }
    inline bitdefGPOH2_ALM_ST getGPOH2_ALM_ST() const
    {
       return static_cast<bitdefGPOH2_ALM_ST>(GPOH.b.GPIOH2_ALM_ST);
@@ -2525,11 +2163,6 @@ public:
    inline RegGPIOHV& setGPOH1_ALM_ST(bitdefGPOH1_ALM_ST value)
    {
       GPOH.b.GPIOH1_ALM_ST = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegGPIOHV& setGPOH1_ALM_ST(unsigned short value)
-   {
-      GPOH.b.GPIOH1_ALM_ST = value;
       return *this;
    }
    inline bitdefGPOH1_ALM_ST getGPOH_ALM_ST() const
@@ -2542,11 +2175,6 @@ public:
       GPOH.b.GPIOH_FET = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegGPIOHV& setGPOH_FET(unsigned short value)
-   {
-      GPOH.b.GPIOH_FET = value;
-      return *this;
-   }
    inline bitdefGPOH_FET getGPOH_FET() const
    {
       return static_cast<bitdefGPOH_FET>(GPOH.b.GPIOH_FET);
@@ -2557,11 +2185,6 @@ public:
       GPOH.b.GPIOH2_EN = static_cast<unsigned short>(value);
       return *this;
    }
-   inline RegGPIOHV& enableGPIOH2(unsigned short value)
-   {
-      GPOH.b.GPIOH2_EN = value;
-      return *this;
-   }
    inline bitdefGPOH2_CTRL isEnabledGPIOH2() const
    {
       return static_cast<bitdefGPOH2_CTRL>(GPOH.b.GPIOH2_EN);
@@ -2570,11 +2193,6 @@ public:
    inline RegGPIOHV& enableGPOH1(bitdefGPOH1_CTRL value)
    {
       GPOH.b.GPIOH1_EN = static_cast<unsigned short>(value);
-      return *this;
-   }
-   inline RegGPIOHV& enableGPIOH1(unsigned short value)
-   {
-      GPOH.b.GPIOH1_EN = value;
       return *this;
    }
    inline bitdefGPOH1_CTRL isEnabledGPIOH1() const
@@ -2600,16 +2218,574 @@ private:
    } GPOH;
 };
 
-enum class bitdefOVP_F_SET : unsigned char
+enum class bitdefOVP_F_SET : unsigned short
 {
    shutdown = 0x00,
    no_change = 0x01
 };
 
-enum class bitdefTSD_F_SET : unsigned char
+enum class bitdefTSD_F_SET : unsigned short
 {
    shutdown = 0x00,
    no_change = 0x01
 };
 
+enum class bitdefOSCH_DIV : unsigned short
+{
+   osch_160KHz = 0x00,
+   osch_40KHz = 0x01
+};
+
+enum class bitdefOSCL_DIV : unsigned short
+{
+   oscl_262K144Hz = 0x00,
+   oscl_2k096Hz = 0x01
+};
+
+enum class bitdefPULLUP_SEL : unsigned short
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefACTV_DLY : unsigned short
+{
+   delay_1cycle = 0x00,
+   delay_2cycle = 0x01,
+   delay_3cycle = 0x02,
+   delay_4cycle = 0x03
+};
+
+class RegGPIO4
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegGPIO4& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::GPIO4, &GPIO4.bytes[0]);
+      return *this;
+   }
+   RegGPIO4& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::GPIO4, &GPIO4.bytes[0]);
+      return *this;
+   }
+
+   inline RegGPIO4& setOVP_F_SET(bitdefOVP_F_SET value)
+   {
+      GPIO4.b.OVP_F_SET = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefOVP_F_SET getOVP_F_SET() const
+   {
+      return static_cast<bitdefOVP_F_SET>(GPIO4.b.OVP_F_SET);
+   }
+
+   inline RegGPIO4& setTSD_F_SET(bitdefTSD_F_SET value)
+   {
+      GPIO4.b.TSD_F_SET = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefTSD_F_SET getTSD_F_SET() const
+   {
+      return static_cast<bitdefTSD_F_SET>(GPIO4.b.TSD_F_SET);
+   }
+
+   inline RegGPIO4& setOSCH_DIV(bitdefOSCH_DIV value)
+   {
+      GPIO4.b.OSCH_DIV = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefOSCH_DIV getOSCH_DIV() const
+   {
+      return static_cast<bitdefOSCH_DIV>(GPIO4.b.OSCH_DIV);
+   }
+
+   inline RegGPIO4& setOSCL_DIV(bitdefOSCL_DIV value)
+   {
+      GPIO4.b.OSCL_DIV = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefOSCL_DIV getOSCL_DIV() const
+   {
+      return static_cast<bitdefOSCL_DIV>(GPIO4.b.OSCL_DIV);
+   }
+
+   inline RegGPIO4& setTMON1PullUp(bitdefPULLUP_SEL value)
+   {
+      GPIO4.b.PULLUP_SEL1 = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefPULLUP_SEL getTMON1PullUp() const
+   {
+      return static_cast<bitdefPULLUP_SEL>(GPIO4.b.PULLUP_SEL1);
+   }
+
+   inline RegGPIO4& setTMON2PullUp(bitdefPULLUP_SEL value)
+   {
+      GPIO4.b.PULLUP_SEL2 = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefPULLUP_SEL getTMON2PullUp() const
+   {
+      return static_cast<bitdefPULLUP_SEL>(GPIO4.b.PULLUP_SEL2);
+   }
+
+   inline RegGPIO4& setTMON3PullUp(bitdefPULLUP_SEL value)
+   {
+      GPIO4.b.PULLUP_SEL3 = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefPULLUP_SEL getTMON3PullUp() const
+   {
+      return static_cast<bitdefPULLUP_SEL>(GPIO4.b.PULLUP_SEL3);
+   }
+
+   inline RegGPIO4& setTMON4PullUp(bitdefPULLUP_SEL value)
+   {
+      GPIO4.b.PULLUP_SEL4 = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefPULLUP_SEL getTMON4PullUp() const
+   {
+      return static_cast<bitdefPULLUP_SEL>(GPIO4.b.PULLUP_SEL4);
+   }
+
+   inline RegGPIO4& setTMON5PullUp(bitdefPULLUP_SEL value)
+   {
+      GPIO4.b.PULLUP_SEL5 = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefPULLUP_SEL getTMON5PullUp() const
+   {
+      return static_cast<bitdefPULLUP_SEL>(GPIO4.b.PULLUP_SEL5);
+   }
+
+   inline RegGPIO4& setACTV_DLY(bitdefACTV_DLY value)
+   {
+      GPIO4.b.ACTV_DLY = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefACTV_DLY getACTV_DLY() const
+   {
+      return static_cast<bitdefACTV_DLY>(GPIO4.b.ACTV_DLY);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short ACTV_DLY : 2;
+         unsigned short : 1;
+         unsigned short PULLUP_SEL1 : 1;
+         unsigned short PULLUP_SEL2 : 1;
+         unsigned short PULLUP_SEL3 : 1;
+         unsigned short PULLUP_SEL4 : 1;
+         unsigned short PULLUP_SEL5 : 1;
+         unsigned short OSCL_DIV : 1;
+         unsigned short OSCH_DIV : 1;
+         unsigned short : 3;
+         unsigned short TSD_F_SET : 1;
+         unsigned short OVP_F_SET : 1;
+         unsigned short : 1;
+      } b;
+   } GPIO4;
+};
+
+enum class bitdefALARMSEL : unsigned short
+{
+   all = 0x00,
+   scd_only = 0x01
+};
+
+enum class bitdefEN_SCD : unsigned short
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+enum class bitdefEN_OCD : unsigned short
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+enum class bitdefEN_OCC : unsigned short
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+enum class bitdefEN_CP : unsigned short
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+enum class bitdefSCD_D : unsigned short
+{
+   threshold_20mV = 0x00,
+   threshold_40mV = 0x01,
+   threshold_60mV = 0x02,
+   threshold_80mV = 0x03,
+   threshold_100mV = 0x04,
+   threshold_120mV = 0x05,
+   threshold_140mV = 0x06,
+   threshold_160mV = 0x07,
+   threshold_180mV = 0x08,
+   threshold_200mV = 0x09,
+   threshold_220mV = 0x0A,
+   threshold_240mV = 0x0B,
+   threshold_260mV = 0x0C,
+   threshold_280mV = 0x0D,
+   threshold_300mV = 0x0E,
+   threshold_320mV = 0x0F,
+   threshold_340mV = 0x10,
+   threshold_360mV = 0x11,
+   threshold_380mV = 0x12,
+   threshold_400mV = 0x13,
+   threshold_420mV = 0x14,
+   threshold_440mV = 0x15,
+   threshold_460mV = 0x16,
+   threshold_480mV = 0x17,
+   threshold_500mV = 0x18,
+   threshold_520mV = 0x19,
+   threshold_540mV = 0x1A,
+   threshold_560mV = 0x1B,
+   threshold_580mV = 0x1C,
+   threshold_600mV = 0x1D,
+   threshold_620mV = 0x1E,
+   threshold_640mV = 0x1F
+};
+
+enum class bitdefOCD_D : unsigned short
+{
+   threshold_10mV = 0x00,
+   threshold_20mV = 0x01,
+   threshold_30mV = 0x02,
+   threshold_40mV = 0x03,
+   threshold_50mV = 0x04,
+   threshold_60mV = 0x05,
+   threshold_70mV = 0x06,
+   threshold_80mV = 0x07,
+   threshold_90mV = 0x08,
+   threshold_100mV = 0x09,
+   threshold_110mV = 0x0A,
+   threshold_120mV = 0x0B,
+   threshold_130mV = 0x0C,
+   threshold_140mV = 0x0D,
+   threshold_150mV = 0x0E,
+   threshold_160mV = 0x0F,
+   threshold_170mV = 0x10,
+   threshold_180mV = 0x11,
+   threshold_190mV = 0x12,
+   threshold_200mV = 0x13,
+   threshold_210mV = 0x14,
+   threshold_220mV = 0x15,
+   threshold_230mV = 0x16,
+   threshold_240mV = 0x17,
+   threshold_250mV = 0x18,
+   threshold_260mV = 0x19,
+   threshold_270mV = 0x1A,
+   threshold_280mV = 0x1B,
+   threshold_290mV = 0x1C,
+   threshold_200mV = 0x1D,
+   threshold_310mV = 0x1E,
+   threshold_320mV = 0x1F
+};
+
+enum class bitdefOCC_D : unsigned short
+{
+   threshold_5mV = 0x00,
+   threshold_10mV = 0x01,
+   threshold_15mV = 0x02,
+   threshold_20mV = 0x03,
+   threshold_25mV = 0x04,
+   threshold_30mV = 0x05,
+   threshold_35mV = 0x06,
+   threshold_40mV = 0x07,
+   threshold_45mV = 0x08,
+   threshold_50mV = 0x09,
+   threshold_55mV = 0x0A,
+   threshold_60mV = 0x0B,
+   threshold_65mV = 0x0C,
+   threshold_70mV = 0x0D,
+   threshold_75mV = 0x0E,
+   threshold_80mV = 0x0F,
+   threshold_85mV = 0x10,
+   threshold_90mV = 0x11,
+   threshold_95mV = 0x12,
+   threshold_100mV = 0x13,
+   threshold_105mV = 0x14,
+   threshold_110mV = 0x15,
+   threshold_115mV = 0x16,
+   threshold_120mV = 0x17
+};
+
+enum class bitdefSCD_DLY : unsigned short
+{
+   delay_00us00 = 0x00,
+   delay_31us25 = 0x01,
+   delay_62us50 = 0x02,
+   delay_93us75 = 0x03,
+   delay_125us00 = 0x04,
+   delay_156us25 = 0x05,
+   delay_187us50 = 0x06,
+   delay_218us75 = 0x07,
+   delay_250us00 = 0x08,
+   delay_281us25 = 0x09,
+   delay_312us50 = 0x0A,
+   delay_343us75 = 0x0B,
+   delay_375us00 = 0x0C,
+   delay_406us25 = 0x0D,
+   delay_437us50 = 0x0E,
+   delay_468us75 = 0x0F,
+   delay_500us00 = 0x10,
+   delay_531us25 = 0x11,
+   delay_562us50 = 0x12,
+   delay_593us75 = 0x13,
+   delay_625us00 = 0x14,
+   delay_656us25 = 0x15,
+   delay_687us50 = 0x16,
+   delay_718us75 = 0x17,
+   delay_750us00 = 0x18,
+   delay_781us25 = 0x19,
+   delay_812us50 = 0x1A,
+   delay_843us75 = 0x1B,
+   delay_875us00 = 0x1C,
+   delay_906us25 = 0x1D,
+   delay_937us50 = 0x1E,
+   delay_968us75 = 0x1F
+};
+
+enum class bitdefOCD_DLY : unsigned short
+{
+   delay_10ms = 0x00,
+   delay_20ms = 0x01,
+   delay_30ms = 0x02,
+   delay_40ms = 0x03,
+   delay_50ms = 0x04,
+   delay_60ms = 0x05,
+   delay_70ms = 0x06,
+   delay_80ms = 0x07,
+   delay_90ms = 0x08,
+   delay_100ms = 0x09,
+   delay_110ms = 0x0A,
+   delay_120ms = 0x0B,
+   delay_130ms = 0x0C,
+   delay_140ms = 0x0D,
+   delay_150ms = 0x0E,
+   delay_160ms = 0x0F,
+   delay_170ms = 0x10,
+   delay_180ms = 0x11,
+   delay_190ms = 0x12,
+   delay_200ms = 0x13,
+   delay_210ms = 0x14,
+   delay_220ms = 0x15,
+   delay_230ms = 0x16,
+   delay_240ms = 0x17,
+   delay_250ms = 0x18,
+   delay_260ms = 0x19,
+   delay_270ms = 0x1A,
+   delay_280ms = 0x1B,
+   delay_290ms = 0x1C,
+   delay_300ms = 0x1D,
+   delay_310ms = 0x1E,
+   delay_320ms = 0x1F
+};
+
+enum class bitdefOCC_DLY : unsigned short
+{
+   delay_10ms = 0x00,
+   delay_20ms = 0x01,
+   delay_30ms = 0x02,
+   delay_40ms = 0x03,
+   delay_50ms = 0x04,
+   delay_60ms = 0x05,
+   delay_70ms = 0x06,
+   delay_80ms = 0x07,
+   delay_90ms = 0x08,
+   delay_100ms = 0x09,
+   delay_110ms = 0x0A,
+   delay_120ms = 0x0B,
+   delay_130ms = 0x0C,
+   delay_140ms = 0x0D,
+   delay_150ms = 0x0E,
+   delay_160ms = 0x0F,
+   delay_170ms = 0x10,
+   delay_180ms = 0x11,
+   delay_190ms = 0x12,
+   delay_200ms = 0x13,
+   delay_210ms = 0x14,
+   delay_220ms = 0x15,
+   delay_230ms = 0x16,
+   delay_240ms = 0x17,
+   delay_250ms = 0x18,
+   delay_260ms = 0x19,
+   delay_270ms = 0x1A,
+   delay_280ms = 0x1B,
+   delay_290ms = 0x1C,
+   delay_300ms = 0x1D,
+   delay_310ms = 0x1E,
+   delay_320ms = 0x1F
+};
+
+class RegALARM
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegALARM& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::ALARM1, &ALARM1.bytes[0]);
+      ifc->write(Ka495xx_addr::ALARM2, &ALARM2.bytes[0]);
+      ifc->write(Ka495xx_addr::ALARM3, &ALARM3.bytes[0]);
+      return *this;
+   }
+   RegALARM& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::ALARM1, &ALARM1.bytes[0]);
+      ifc->read(Ka495xx_addr::ALARM2, &ALARM2.bytes[0]);
+      ifc->read(Ka495xx_addr::ALARM3, &ALARM3.bytes[0]);
+      return *this;
+   }
+
+   inline RegALARM& setALARMSEL(bitdefALARMSEL value)
+   {
+      ALARM1.b.ALARM_SEL = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefALARMSEL getALARMSEL() const
+   {
+      return static_cast<bitdefALARMSEL>(ALARM1.b.ALARM_SEL);
+   }
+
+   inline RegALARM& setEN_SCD(bitdefEN_SCD value)
+   {
+      ALARM1.b.EN_SCD = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefEN_SCD getEN_SCD() const
+   {
+      return static_cast<bitdefEN_SCD>(ALARM1.b.EN_SCD);
+   }
+
+   inline RegALARM& setEN_OCD(bitdefEN_OCD value)
+   {
+      ALARM1.b.EN_OCD = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefEN_OCD getEN_OCD() const
+   {
+      return static_cast<bitdefEN_OCD>(ALARM1.b.EN_OCD);
+   }
+
+   inline RegALARM& setSCD_D(bitdefSCD_D value)
+   {
+      ALARM2.b.SCD_D = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefSCD_D getSCD_D() const
+   {
+      return static_cast<bitdefSCD_D>(ALARM2.b.SCD_D);
+   }
+
+   inline RegALARM& setOCD_D(bitdefOCD_D value)
+   {
+      ALARM2.b.OCD_D = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefOCD_D getOCD_D() const
+   {
+      return static_cast<bitdefOCD_D>(ALARM2.b.OCD_D);
+   }
+
+   inline RegALARM& setOCC_D(bitdefOCC_D value)
+   {
+      ALARM2.b.OCC_D = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefOCC_D getOCC_D() const
+   {
+      return static_cast<bitdefOCC_D>(ALARM2.b.OCD_D);
+   }
+
+   inline RegALARM& setSCD_DLY(bitdefSCD_DLY value)
+   {
+      ALARM3.b.SCD_DLY = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefSCD_DLY getSCD_DLY() const
+   {
+      return static_cast<bitdefSCD_DLY>(ALARM3.b.SCD_DLY);
+   }
+
+   inline RegALARM& setOCD_DLY(bitdefOCD_DLY value)
+   {
+      ALARM3.b.OCD_DLY = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefOCD_DLY getOCD_DLY() const
+   {
+      return static_cast<bitdefOCD_DLY>(ALARM3.b.OCD_DLY);
+   }
+   
+   inline RegALARM& setOCC_DLY(bitdefOCC_DLY value)
+   {
+      ALARM3.b.OCC_DLY = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefOCC_DLY getOCC_DLY() const
+   {
+      return static_cast<bitdefOCC_DLY>(ALARM3.b.OCC_DLY);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short EN_CP : 1;
+         unsigned short EN_OCC : 1;
+         unsigned short EN_OCD : 1;
+         unsigned short EN_SCD : 1;
+         unsigned short : 11;
+         unsigned short ALARM_SEL : 1;
+      } b;
+   } ALARM1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short OCC_D : 5;
+         unsigned short OCD_D : 5;
+         unsigned short SCD_D : 5;
+         unsigned short : 1;
+      } b;
+   } ALARM2;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short OCC_DLY : 5;
+         unsigned short OCD_DLY : 5;
+         unsigned short SCD_DLY : 5;
+         unsigned short : 1;
+      } b;
+   } ALARM3;
+};
 #endif /* __KA495XX_SFR_H__ */
