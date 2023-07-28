@@ -2484,10 +2484,120 @@ enum class bitdefGPOH2_CTRL : unsigned char
    low = 0x01
 };
 
-enum class bitdefGPOH1_CTL : unsigned char
+enum class bitdefGPOH1_CTRL : unsigned char
 {
    high = 0x00,
    low = 0x01
+};
+
+class RegGPIOHV
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegGPIOHV& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::GPIOH, &GPOH.bytes[0]);
+      return *this;
+   }
+   RegGPIOHV& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::GPIOH, &GPOH.bytes[0]);
+      return *this;
+   }
+
+   inline RegGPIOHV& setGPOH2_ALM_ST(bitdefGPOH2_ALM_ST value)
+   {
+      GPOH.b.GPIOH2_ALM_ST = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIOHV& setGPOH2_ALM_ST(unsigned short value)
+   {
+      GPOH.b.GPIOH2_ALM_ST = value;
+      return *this;
+   }
+   inline bitdefGPOH2_ALM_ST getGPOH2_ALM_ST() const
+   {
+      return static_cast<bitdefGPOH2_ALM_ST>(GPOH.b.GPIOH2_ALM_ST);
+   }
+
+   inline RegGPIOHV& setGPOH1_ALM_ST(bitdefGPOH1_ALM_ST value)
+   {
+      GPOH.b.GPIOH1_ALM_ST = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIOHV& setGPOH1_ALM_ST(unsigned short value)
+   {
+      GPOH.b.GPIOH1_ALM_ST = value;
+      return *this;
+   }
+   inline bitdefGPOH1_ALM_ST getGPOH_ALM_ST() const
+   {
+      return static_cast<bitdefGPOH1_ALM_ST>(GPOH.b.GPIOH1_ALM_ST);
+   }
+
+   inline RegGPIOHV& setGPOH_FET(bitdefGPOH_FET value)
+   {
+      GPOH.b.GPIOH_FET = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIOHV& setGPOH_FET(unsigned short value)
+   {
+      GPOH.b.GPIOH_FET = value;
+      return *this;
+   }
+   inline bitdefGPOH_FET getGPOH_FET() const
+   {
+      return static_cast<bitdefGPOH_FET>(GPOH.b.GPIOH_FET);
+   }
+
+   inline RegGPIOHV& enableGPOH2(bitdefGPOH2_CTRL value)
+   {
+      GPOH.b.GPIOH2_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIOHV& enableGPIOH2(unsigned short value)
+   {
+      GPOH.b.GPIOH2_EN = value;
+      return *this;
+   }
+   inline bitdefGPOH2_CTRL isEnabledGPIOH2() const
+   {
+      return static_cast<bitdefGPOH2_CTRL>(GPOH.b.GPIOH2_EN);
+   }
+
+   inline RegGPIOHV& enableGPOH1(bitdefGPOH1_CTRL value)
+   {
+      GPOH.b.GPIOH1_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline RegGPIOHV& enableGPIOH1(unsigned short value)
+   {
+      GPOH.b.GPIOH1_EN = value;
+      return *this;
+   }
+   inline bitdefGPOH1_CTRL isEnabledGPIOH1() const
+   {
+      return static_cast<bitdefGPOH1_CTRL>(GPOH.b.GPIOH1_EN);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short GPIOH1_EN : 1;
+         unsigned short GPIOH2_EN : 1;
+         unsigned short GPIOH_FET : 1;
+         unsigned short : 1;
+         unsigned short GPIOH1_ALM_ST : 1;
+         unsigned short GPIOH2_ALM_ST : 1;
+         unsigned short : 10;
+      } b;
+   } GPOH;
 };
 
 enum class bitdefOVP_F_SET : unsigned char
