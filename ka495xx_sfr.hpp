@@ -2869,4 +2869,306 @@ private:
    } CBSEL2;
 };
 
+enum class bitdefDIS_OSC_OFF : unsigned short
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefSDI_PLDW : unsigned short
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefSCL_PLDW : unsigned short
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefSEN_PLDW : unsigned short
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefPD_REG55 : unsigned short
+{
+   normal = 0x00,
+   power_down = 0x01
+};
+
+enum class bitdefNPD_CB : unsigned short
+{
+   power_down = 0x00,
+   normal = 0x01
+};
+
+class RegOTHCTL
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegOTHCTL& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::OTH, &OTH.bytes[0]);
+      ifc->write(Ka495xx_addr::OTH, &OTH.bytes[0]);
+      return *this;
+   }
+   RegOTHCTL& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::CBSEL1, &OTH.bytes[0]);
+      ifc->read(Ka495xx_addr::CBSEL2, &OTH.bytes[0]);
+      return *this;
+   }
+
+   inline RegOTHCTL& setDIS_OSC_OFF(bitdefDIS_OSC_OFF value)
+   {
+      OTH.b.DIS_OSC_OFF = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefDIS_OSC_OFF getDIS_OSC_OFF() const
+   {
+      return static_cast<bitdefDIS_OSC_OFF>(OTH.b.DIS_OSC_OFF);
+   }
+
+   inline RegOTHCTL& setSDI_PLDW(bitdefSDI_PLDW value)
+   {
+      OTH.b.SDI_PLDW = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefSDI_PLDW getSDI_PLDW() const
+   {
+      return static_cast<bitdefSDI_PLDW>(OTH.b.SDI_PLDW);
+   }
+
+   inline RegOTHCTL& setSCL_PLDW(bitdefSCL_PLDW value)
+   {
+      OTH.b.SCL_PLDW = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefSCL_PLDW getSCL_PLDW() const
+   {
+      return static_cast<bitdefSCL_PLDW>(OTH.b.SCL_PLDW);
+   }
+
+   inline RegOTHCTL& setSEN_PLDW(bitdefSEN_PLDW value)
+   {
+      OTH.b.SEN_PLDW = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefSEN_PLDW getSEN_PLDW() const
+   {
+      return static_cast<bitdefSEN_PLDW>(OTH.b.SEN_PLDW);
+   }
+
+   inline RegOTHCTL& setPD_REG55(bitdefPD_REG55 value)
+   {
+      OTH.b.PD_REG55 = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefPD_REG55 getPD_REG55() const
+   {
+      return static_cast<bitdefPD_REG55>(OTH.b.PD_REG55);
+   }
+
+   inline RegOTHCTL& setNPD_CB(bitdefNPD_CB value)
+   {
+      OTH.b.NPD_CB = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefNPD_CB getNPD_CB() const
+   {
+      return static_cast<bitdefNPD_CB>(OTH.b.NPD_CB);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short NPD_CB : 1;
+         unsigned short : 5;
+         unsigned short PD_REG55 : 1;
+         unsigned short : 1;
+         unsigned short SEN_PLDW : 1;
+         unsigned short SCL_PLDW : 1;
+         unsigned short SDI_PLDW : 1;
+         unsigned short : 3;
+         unsigned short DIS_OSC_OFF : 1;
+         unsigned short : 1;
+      } b;
+   } OTH;
+};
+
+enum class bitdefADSWHY_EN : unsigned short
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefADSWSD_EN : unsigned short
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefADIH_CSYNC : unsigned short
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+enum class bitdefISD_STOPEN : unsigned short
+{
+   enable = 0x00,
+   disable = 0x01
+};
+
+enum class bitdefADI_LATCH_SET : unsigned short
+{
+   instant = 0x00,
+   sync = 0x01
+};
+
+enum class bitdefADV_LATCH_SET : unsigned short
+{
+   instant = 0x00,
+   sync = 0x01
+};
+
+enum class bitdefADIL_ON  : unsigned short
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+enum class bitdefADIH_ON : unsigned short
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+class RegADCTL
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegADCTL& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::ADC, &ADCTL.bytes[0]);
+      return *this;
+   }
+   RegADCTL& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::ADC, &ADCTL.bytes[0]);
+      return *this;
+   }
+
+   inline RegADCTL& setADSWHY_EN(bitdefADSWHY_EN value)
+   {
+      ADCTL.b.ADSWHY_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefADSWHY_EN getADSWHY_EN() const
+   {
+      return static_cast<bitdefADSWHY_EN>(ADCTL.b.ADSWHY_EN);
+   }
+
+   inline RegADCTL& setADSWSD_EN(bitdefADSWSD_EN value)
+   {
+      ADCTL.b.ADSWSD_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefADSWSD_EN getADSWSD_EN() const
+   {
+      return static_cast<bitdefADSWSD_EN>(ADCTL.b.ADSWSD_EN);
+   }
+
+   inline RegADCTL& setADIH_CSYNC(bitdefADIH_CSYNC value)
+   {
+      ADCTL.b.ADIH_CSYNC = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefADIH_CSYNC getADIH_CSYNC() const
+   {
+      return static_cast<bitdefADIH_CSYNC>(ADCTL.b.ADIH_CSYNC);
+   }
+
+   inline RegADCTL& setISD_STOPEN(bitdefISD_STOPEN value)
+   {
+      ADCTL.b.ISD_STOP_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefISD_STOPEN getISD_STOPEN() const
+   {
+      return static_cast<bitdefISD_STOPEN>(ADCTL.b.ISD_STOP_EN);
+   }
+
+   inline RegADCTL& setADI_LATCH_SET(bitdefADI_LATCH_SET value)
+   {
+      ADCTL.b.ADI_LATCH_SET = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefADI_LATCH_SET getADI_LATCH_SET() const
+   {
+      return static_cast<bitdefADI_LATCH_SET>(ADCTL.b.ADI_LATCH_SET);
+   }
+
+   inline RegADCTL& setADV_LATCH_SET(bitdefADV_LATCH_SET value)
+   {
+      ADCTL.b.ADV_LATCH_SET = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefADV_LATCH_SET getADV_LATCH_SET() const
+   {
+      return static_cast<bitdefADV_LATCH_SET>(ADCTL.b.ADV_LATCH_SET);
+   }
+
+   inline RegADCTL& setADIL_ON(bitdefADIL_ON value)
+   {
+      ADCTL.b.ADIL_ON = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefADIL_ON getADIL_ON() const
+   {
+      return static_cast<bitdefADIL_ON>(ADCTL.b.ADIL_ON);
+   }
+
+   inline RegADCTL& setADIH_ON(bitdefADIH_ON value)
+   {
+      ADCTL.b.ADIH_ON = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefADIH_ON getADIH_ON() const
+   {
+      return static_cast<bitdefADIH_ON>(ADCTL.b.ADIH_ON);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short ADIH_ON : 1;
+         unsigned short ADIL_ON : 1;
+         unsigned short ADV_LATCH_SET : 1;
+         unsigned short ADI_LATCH_SET : 1;
+         unsigned short ISD_STOP_EN : 1;
+         unsigned short ADIH_CSYNC : 1;
+         unsigned short : 6;
+         unsigned short ADSWSD_EN : 1;
+         unsigned short ADSWHY_EN : 1;
+         unsigned short : 2;
+      } b;
+   } ADCTL;
+};
+
 #endif /* __KA495XX_SFR_H__ */
