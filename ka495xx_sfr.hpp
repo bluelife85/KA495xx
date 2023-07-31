@@ -1982,8 +1982,9 @@ enum class GPIOId
 class RegGPIO123
 {
 public:
-   RegGPIO123(GPIOId id)
+   void hal(Ka495xx_interface* ifc, GPIOId id)
    {
+      this->ifc = ifc;
       this->id = id;
       switch(id)
       {
@@ -1998,7 +1999,6 @@ public:
          break;
       }
    }
-   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegGPIO123& write()
    {
       if(ifc == nullptr) return *this;
@@ -3676,7 +3676,7 @@ public:
       ifc->read(Ka495xx_addr::STAT2, &STAT2.bytes[0]);
       ifc->read(Ka495xx_addr::STAT3, &STAT3.bytes[0]);
       ST_CVSEL = STAT2.hfword;
-      ST_CVSEL = (unsigned long) STAT3.hfword << 16;
+      ST_CVSEL |= (unsigned long) STAT3.hfword << 16;
       ifc->read(Ka495xx_addr::STAT4, &STAT4.bytes[0]);
       ST_TMONI5SEL = static_cast<bitdefST_TMONI5SEL>(STAT4.b.ST_TMONI5SEL);
       ST_TMONI4SEL = static_cast<bitdefST_TMONI4SEL>(STAT4.b.ST_TMONI4SEL);
@@ -4265,4 +4265,417 @@ private:
    float value;
 };
 
+class RegOVLSTAT
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegOVLSTAT& write()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->write(Ka495xx_addr::OVLSTAT1, &OVLSTAT1.bytes[0]);
+      ifc->write(Ka495xx_addr::OVLSTAT2, &OVLSTAT2.bytes[0]);
+      return *this;
+   }
+   RegOVLSTAT& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::OVLSTAT1, &OVLSTAT1.bytes[0]);
+      ifc->read(Ka495xx_addr::OVLSTAT2, &OVLSTAT2.bytes[0]);
+      status = (unsigned long) OVLSTAT1.hfword | (unsigned long) OVLSTAT2.hfword << 16;
+
+      return *this;
+   }
+
+   inline RegOVLSTAT& clear()
+   {
+      status = 0;
+      OVLSTAT1.hfword = 0;
+      OVLSTAT2.hfword = 0;
+      return *this;
+   }
+private:
+   Ka495xx_interface* ifc;
+   unsigned long status;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL1 : 1;
+         unsigned short CELL2 : 1;
+         unsigned short CELL3 : 1;
+         unsigned short CELL4 : 1;
+         unsigned short CELL5 : 1;
+         unsigned short CELL6 : 1;
+         unsigned short CELL7 : 1;
+         unsigned short CELL8 : 1;
+         unsigned short CELL9 : 1;
+         unsigned short CELL10 : 1;
+         unsigned short CELL11 : 1;
+         unsigned short CELL12 : 1;
+         unsigned short CELL13 : 1;
+         unsigned short CELL14 : 1;
+         unsigned short CELL15 : 1;
+         unsigned short CELL16 : 1;
+      } b;
+   } OVLSTAT1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL17 : 1;
+         unsigned short CELL18 : 1;
+         unsigned short CELL19 : 1;
+         unsigned short CELL20 : 1;
+         unsigned short CELL21 : 1;
+         unsigned short CELL22 : 1;
+         unsigned short : 10;
+      } b;
+   } OVLSTAT2;
+};
+
+class RegUVLSTAT
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegUVLSTAT& write()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->write(Ka495xx_addr::UVLSTAT1, &UVLSTAT1.bytes[0]);
+      ifc->write(Ka495xx_addr::UVLSTAT2, &UVLSTAT2.bytes[0]);
+      return *this;
+   }
+   RegUVLSTAT& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::UVLSTAT1, &UVLSTAT1.bytes[0]);
+      ifc->read(Ka495xx_addr::UVLSTAT2, &UVLSTAT2.bytes[0]);
+      status = (unsigned long) UVLSTAT1.hfword | (unsigned long) UVLSTAT2.hfword << 16;
+
+      return *this;
+   }
+
+   inline RegUVLSTAT& clear()
+   {
+      status = 0;
+      UVLSTAT1.hfword = 0;
+      UVLSTAT2.hfword = 0;
+      return *this;
+   }
+private:
+   Ka495xx_interface* ifc;
+   unsigned long status;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL1 : 1;
+         unsigned short CELL2 : 1;
+         unsigned short CELL3 : 1;
+         unsigned short CELL4 : 1;
+         unsigned short CELL5 : 1;
+         unsigned short CELL6 : 1;
+         unsigned short CELL7 : 1;
+         unsigned short CELL8 : 1;
+         unsigned short CELL9 : 1;
+         unsigned short CELL10 : 1;
+         unsigned short CELL11 : 1;
+         unsigned short CELL12 : 1;
+         unsigned short CELL13 : 1;
+         unsigned short CELL14 : 1;
+         unsigned short CELL15 : 1;
+         unsigned short CELL16 : 1;
+      } b;
+   } UVLSTAT1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL17 : 1;
+         unsigned short CELL18 : 1;
+         unsigned short CELL19 : 1;
+         unsigned short CELL20 : 1;
+         unsigned short CELL21 : 1;
+         unsigned short CELL22 : 1;
+         unsigned short : 10;
+      } b;
+   } UVLSTAT2;
+};
+
+class RegCBSTAT
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegCBSTAT& write()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->write(Ka495xx_addr::CBSTAT1, &CBSTAT1.bytes[0]);
+      ifc->write(Ka495xx_addr::CBSTAT2, &CBSTAT2.bytes[0]);
+      return *this;
+   }
+   RegCBSTAT& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::CBSTAT1, &CBSTAT1.bytes[0]);
+      ifc->read(Ka495xx_addr::CBSTAT2, &CBSTAT2.bytes[0]);
+      status = (unsigned long) CBSTAT1.hfword | (unsigned long) CBSTAT2.hfword << 16;
+
+      return *this;
+   }
+
+   inline RegCBSTAT& clear()
+   {
+      status = 0;
+      CBSTAT1.hfword = 0;
+      CBSTAT2.hfword = 0;
+      return *this;
+   }
+private:
+   Ka495xx_interface* ifc;
+   unsigned long status;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL1 : 1;
+         unsigned short CELL2 : 1;
+         unsigned short CELL3 : 1;
+         unsigned short CELL4 : 1;
+         unsigned short CELL5 : 1;
+         unsigned short CELL6 : 1;
+         unsigned short CELL7 : 1;
+         unsigned short CELL8 : 1;
+         unsigned short CELL9 : 1;
+         unsigned short CELL10 : 1;
+         unsigned short CELL11 : 1;
+         unsigned short CELL12 : 1;
+         unsigned short CELL13 : 1;
+         unsigned short CELL14 : 1;
+         unsigned short CELL15 : 1;
+         unsigned short CELL16 : 1;
+      } b;
+   } CBSTAT1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL17 : 1;
+         unsigned short CELL18 : 1;
+         unsigned short CELL19 : 1;
+         unsigned short CELL20 : 1;
+         unsigned short CELL21 : 1;
+         unsigned short CELL22 : 1;
+         unsigned short : 10;
+      } b;
+   } CBSTAT2;
+};
+
+class RegAUTO_ITHL
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegAUTO_ITHL& write()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->write(Ka495xx_addr::AUTO_ITHL, &AUTO_ITHL.bytes[0]);
+      return *this;
+   }
+   RegAUTO_ITHL& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::AUTO_ITHL, &AUTO_ITHL.bytes[0]);
+      value = (float) AUTO_ITHL.hfword * 0.0054931640625;
+      return *this;
+   }
+
+   RegAUTO_ITHL& set(float value)
+   {
+      if(value >= 180.0) AUTO_ITHL.hfword = 32767;
+      else AUTO_ITHL.hfword = (unsigned short) (value / 0.0054931640625);
+   }
+
+   unsigned short getRaw() const { return AUTO_ITHL.hfword; }
+
+   float get() const { return this->value; }
+private:
+   Ka495xx_interface* ifc;
+   float value;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+   } AUTO_ITHL;
+};
+
+enum class bitdefR55GAIN
+{
+   IB0mA89 = 0x00,
+   IB0mA79 = 0x01,
+   IB0mA70 = 0x02,
+   IB0mA64 = 0x03,
+   IB2mA20 = 0x04,
+   IB1mA65 = 0x05,
+   IB1mA32 = 0x06,
+   IB1mA09 = 0x07
+};
+
+enum class bitdefR55TC
+{
+   change_p33p_to_m40p = 0x00,
+   change_p28p_to_m35p = 0x01,
+   change_p23p_to_m30p = 0x02,
+   change_p18p_to_m25p = 0x03,
+   change_p50p_to_m57p = 0x04,
+   change_p46p_to_m53p = 0x05,
+   change_p42p_to_m49p = 0x06,
+   change_p38p_to_m44p = 0x07
+};
+
+enum class bitdefR55VC
+{
+   change_m16p5_to_m10p4 = 0x00,
+   change_m20p7_to_m13p4 = 0x01,
+   change_m25p4_to_m16p9 = 0x02,
+   change_m30p5_to_m20p6 = 0x03,
+   change_m2p7_to_m2p3 = 0x04,
+   change_m5p1_to_m4p3 = 0x05,
+   change_m10p0_to_m6p6 = 0x06
+};
+
+class RegVDD55_CTL
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegVDD55_CTL& write()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->write(Ka495xx_addr::VDD55, &VDD55_CTL.bytes[0]);
+      return *this;
+   }
+   RegVDD55_CTL& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::VDD55, &VDD55_CTL.bytes[0]);
+      return *this;
+   }
+
+   inline RegVDD55_CTL& setR55GAIN(bitdefR55GAIN value)
+   {
+      VDD55_CTL.b.R55GAIN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefR55GAIN getR55GAIN() const
+   {
+      return static_cast<bitdefR55GAIN>(VDD55_CTL.b.R55GAIN);
+   }
+
+   inline RegVDD55_CTL& setR55TC(bitdefR55TC value)
+   {
+      VDD55_CTL.b.R55TC = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefR55TC getR55TC() const
+   {
+      return static_cast<bitdefR55TC>(VDD55_CTL.b.R55TC);
+   }
+
+   inline RegVDD55_CTL& setR55VC(bitdefR55VC value)
+   {
+      VDD55_CTL.b.R55VC = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefR55VC getR55VC() const
+   {
+      return static_cast<bitdefR55VC>(VDD55_CTL.b.R55VC);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short : 1;
+         unsigned short R55VC : 3;
+         unsigned short R55TC : 3;
+         unsigned short R55GAIN : 3;
+         unsigned short : 6;
+      } b;
+   } VDD55_CTL;
+};
+
+class RegTMONRES
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegTMONRES& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::TMONI1, &TMON1.bytes[0]);
+      rpu[0] = 10000.0 + ((float) TMON1.b.TMON1_RES * 5.859375);
+      ifc->read(Ka495xx_addr::TMONI23, &TMON23.bytes[0]);
+      rpu[1] = (float) TMON23.b.TMON2_RES * 5.859375;
+      rpu[2] = (float) TMON23.b.TMON3_RES * 5.859375;
+      ifc->read(Ka495xx_addr::TMONI45, &TMON45.bytes[0]);
+      rpu[3] = (float) TMON45.b.TMON4_RES * 5.859375;
+      rpu[4] = (float) TMON45.b.TMON5_RES * 5.859375;
+      return *this;
+   }
+
+   float getRPU1() const { return rpu[0]; }
+   float getRPU2() const { return rpu[1]; }
+   float getRPU3() const { return rpu[2]; }
+   float getRPU4() const { return rpu[3]; }
+   float getRPU5() const { return rpu[4]; }
+private:
+   Ka495xx_interface* ifc;
+   float rpu[5];
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short TMON1_RES : 10;
+         unsigned short : 6;
+      } b;
+   } TMON1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short TMON2_RES : 8;
+         unsigned short TMON3_RES : 8;
+      } b;
+   } TMON23;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short TMON4_RES : 8;
+         unsigned short TMON5_RES : 8;
+      } b;
+   } TMON45;
+};
 #endif /* __KA495XX_SFR_H__ */
