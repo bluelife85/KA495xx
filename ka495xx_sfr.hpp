@@ -3171,4 +3171,84 @@ private:
    } ADCTL;
 };
 
+class RegINRCV
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegINRCV& write()
+   {
+      if(ifc == nullptr) return;
+      ifc->write(Ka495xx_addr::INRCV1, &INRCV1.bytes[0]);
+      ifc->write(Ka495xx_addr::INRCV2, &INRCV2.bytes[0]);
+      return *this;
+   }
+   RegINRCV& update()
+   {
+      if(ifc == nullptr) return;
+      ifc->read(Ka495xx_addr::INRCV1, &INRCV1.bytes[0]);
+      ifc->read(Ka495xx_addr::INRCV2, &INRCV2.bytes[0]);
+      return *this;
+   }
+
+   inline RegINRCV& select(CELLS channel)
+   {
+      unsigned long lower = static_cast<unsigned long>(channel) & 0x00007FFF;
+      unsigned long upper = (static_cast<unsigned long>(channel) & 0x003F8000) >> 15;
+      INRCV1.hfword = lower;
+      INRCV2.hfword = upper;
+      return *this;
+   }
+   inline RegINRCV& deselect(CELLS channel)
+   {
+      unsigned long lower = static_cast<unsigned long>(channel) & 0x00007FFF;
+      unsigned long upper = (static_cast<unsigned long>(channel) & 0x003F8000) >> 15;
+      INRCV1.hfword &= ~lower;
+      INRCV2.hfword &= ~upper;
+      return *this;
+   }
+private:
+   Ka495xx_interface* ifc;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL1 : 1;
+         unsigned short CELL2 : 1;
+         unsigned short CELL3 : 1;
+         unsigned short CELL4 : 1;
+         unsigned short CELL5 : 1;
+         unsigned short CELL6 : 1;
+         unsigned short CELL7 : 1;
+         unsigned short CELL8 : 1;
+         unsigned short CELL9 : 1;
+         unsigned short CELL10 : 1;
+         unsigned short CELL11 : 1;
+         unsigned short CELL12 : 1;
+         unsigned short CELL13 : 1;
+         unsigned short CELL14 : 1;
+         unsigned short CELL15 : 1;
+         unsigned short CELL16 : 1;
+      } b;
+   } INRCV1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL17 : 1;
+         unsigned short CELL18 : 1;
+         unsigned short CELL19 : 1;
+         unsigned short CELL20 : 1;
+         unsigned short CELL21 : 1;
+         unsigned short CELL22 : 1;
+         unsigned short : 10;
+      } b;
+   } INRCV2;
+};
+
 #endif /* __KA495XX_SFR_H__ */
