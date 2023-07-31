@@ -3982,4 +3982,287 @@ private:
       } b;
    } STAT5;
 };
+
+class RegCV_AD
+{
+public:
+   bool config(Ka495xx_interface* ifc, Ka495xx_addr addr)
+   { 
+      this->ifc = ifc;
+      switch(addr)
+      {
+         case Ka495xx_addr::CV01AD:
+         case Ka495xx_addr::CV02AD:
+         case Ka495xx_addr::CV03AD:
+         case Ka495xx_addr::CV04AD:
+         case Ka495xx_addr::CV05AD:
+         case Ka495xx_addr::CV06AD:
+         case Ka495xx_addr::CV07AD:
+         case Ka495xx_addr::CV08AD:
+         case Ka495xx_addr::CV09AD:
+         case Ka495xx_addr::CV10AD:
+         case Ka495xx_addr::CV11AD:
+         case Ka495xx_addr::CV12AD:
+         case Ka495xx_addr::CV13AD:
+         case Ka495xx_addr::CV14AD:
+         case Ka495xx_addr::CV15AD:
+         case Ka495xx_addr::CV16AD:
+         case Ka495xx_addr::CV17AD:
+         case Ka495xx_addr::CV18AD:
+         case Ka495xx_addr::CV19AD:
+         case Ka495xx_addr::CV20AD:
+         case Ka495xx_addr::CV21AD:
+         case Ka495xx_addr::CV22AD:
+         break;
+         default:
+         return false;
+      }
+      this->addr = addr;
+      return true;
+   }
+   RegCV_AD& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(addr, &raw.bytes[0]);
+      value = (float) raw.hfword * 0.00030517578125;
+      return *this;
+   }
+   unsigned short readRaw() { return raw.hfword; }
+
+   float read() { return value; }
+private:
+   Ka495xx_interface* ifc;
+   Ka495xx_addr addr;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+   } raw;
+   float value;
+};
+
+class RegVPACK_AD
+{
+public:
+   void config(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegVPACK_AD& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::VPACKAD, &raw.bytes[0]);
+      value = (float) raw.hfword * 0.0067138671875;
+      return *this;
+   }
+   unsigned short readRaw() { return raw.hfword; }
+
+   float read() { return value; }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+   } raw;
+   float value;
+};
+
+class RegTMONI_AD
+{
+public:
+   bool config(Ka495xx_interface* ifc, Ka495xx_addr addr)
+   { 
+      this->ifc = ifc;
+      switch(addr)
+      {
+         case Ka495xx_addr::TMONI1AD:
+         case Ka495xx_addr::TMONI2AD:
+         case Ka495xx_addr::TMONI3AD:
+         case Ka495xx_addr::TMONI4AD:
+         case Ka495xx_addr::TMONI5AD:
+         break;
+         default:
+         return false;
+      }
+      this->addr = addr;
+   }
+   RegTMONI_AD& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(addr, &raw.bytes[0]);
+      value = (float) raw.hfword * 0.00030517578125;
+      return *this;
+   }
+   unsigned short readRaw() { return raw.hfword; }
+
+   float read() { return value; }
+private:
+   Ka495xx_interface* ifc;
+   Ka495xx_addr addr;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+   } raw;
+   float value;
+};
+
+class RegVDD55_AD
+{
+public:
+   void config(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegVDD55_AD& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::VDD55AD, &raw.bytes[0]);
+      value = (float) raw.hfword * 0.000457763671875;
+      return *this;
+   }
+   unsigned short readRaw() { return raw.hfword; }
+
+   float read() { return value; }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+   } raw;
+   float value;
+};
+
+class RegGPIO12_AD
+{
+public:
+   bool config(Ka495xx_interface* ifc, Ka495xx_addr addr)
+   { 
+      this->ifc = ifc;
+      switch(addr)
+      {
+         case Ka495xx_addr::GPIO1AD:
+         case Ka495xx_addr::GPIO2AD:
+         break;
+         default:
+         return false;
+      }
+      this->addr = addr;
+   }
+   RegGPIO12_AD& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(addr, &raw.bytes[0]);
+      value = (float) raw.hfword * 0.00030517578125;
+      return *this;
+   }
+   unsigned short readRaw() { return raw.hfword; }
+
+   float read() { return value; }
+private:
+   Ka495xx_interface* ifc;
+   Ka495xx_addr addr;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+   } raw;
+   float value;
+};
+
+class RegCVI_AD
+{
+public:
+   bool config(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegCVI_AD& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::CVIHAD, &CVIHRaw.bytes[0]);
+      ifc->read(Ka495xx_addr::CVILAD, &CVILRaw.bytes[0]);
+      CVIHValue = (float) CVIHRaw.hfword * 0.0054931640625;
+      CVILValue = (float) CVIHRaw.hfword * 0.0054931640625;
+      return *this;
+   }
+   short readCVIHRaw() const { return CVIHRaw.hfword; }
+   short readCVILRaw() const { return CVILRaw.hfword; }
+   float readCVIHValue() const { return CVIHValue; }
+   float readCVILValue() const { return CVILValue; }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      short hfword;
+      unsigned char bytes[2];
+   } CVIHRaw, CVILRaw;
+   float CVIHValue, CVILValue;
+};
+
+class RegVDD18_AD
+{
+public:
+   void config(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegVDD18_AD& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::VDD18AD, &raw.bytes[0]);
+      value = (float) raw.hfword * 0.00030517578125;
+      return *this;
+   }
+   unsigned short readRaw() { return raw.hfword; }
+
+   float read() { return value; }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+   } raw;
+   float value;
+};
+
+class RegREGEXT_AD
+{
+public:
+   void config(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegREGEXT_AD& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::VDD55AD, &raw.bytes[0]);
+      value = (float) raw.hfword * 0.000457763671875;
+      return *this;
+   }
+   unsigned short readRaw() { return raw.hfword; }
+
+   float read() { return value; }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+   } raw;
+   float value;
+};
+
+class RegVREF2_AD
+{
+public:
+   void config(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegVREF2_AD& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::VDD18AD, &raw.bytes[0]);
+      value = (float) raw.hfword * 0.00030517578125;
+      return *this;
+   }
+   unsigned short readRaw() { return raw.hfword; }
+
+   float read() { return value; }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+   } raw;
+   float value;
+};
+
 #endif /* __KA495XX_SFR_H__ */
