@@ -45,15 +45,6 @@ enum class Ka495xx_error
    invalid
 };
 
-template <typename T> class bitprops
-{
-public:
-   T& operator=(const T d) { return value = d;}
-   operator T const &() const { return value; }
-private:
-   T value;
-};
-
 enum class Ka495xx_addr
 {
    PWR_CTRL          = (0x01),
@@ -746,7 +737,11 @@ public:
       ifc->read(Ka495xx_addr::SPIWD, &reg.bytes[0]);
       return *this;
    }
-
+   inline RegSPIWD_CTL& setWDTCOUNT(unsigned short count)
+   {
+      reg.b.WDTCOUNT = count & 0x0FFFu;
+      return *this;
+   }
    inline RegSPIWD_CTL& setWDT_STB_EN(bitdefWDT_STB_EN value)
    {
       reg.b.WDT_STB_EN = static_cast<unsigned short>(value);
@@ -990,7 +985,8 @@ enum class CELLS : unsigned long
    CELL19 = 0x00040000,
    CELL20 = 0x00080000,
    CELL21 = 0x00100000,
-   CELL22 = 0x00200000
+   CELL22 = 0x00200000,
+   CELL_ALL = 0x003FFFFF
 };
 
 CELLS operator|(CELLS a, CELLS b)
@@ -1647,18 +1643,18 @@ enum class bitdefUV_DLY : unsigned char
    delay_6000ms = 0x07
 };
 
-class OUVCTL
+class RegOUVCTL
 {
 public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
-   OUVCTL& write()
+   RegOUVCTL& write()
    {
       if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::OUVCTL1, &OUVCTL1.bytes[0]);
       ifc->write(Ka495xx_addr::OUVCTL2, &OUVCTL2.bytes[0]);
       return *this;
    }
-   OUVCTL& update()
+   RegOUVCTL& update()
    {
       if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::OUVCTL1, &OUVCTL1.bytes[0]);
@@ -1666,7 +1662,7 @@ public:
       return *this;
    }
 
-   inline OUVCTL& setOCTH_SEL(bitdefOCTH_SEL value)
+   inline RegOUVCTL& setOCTH_SEL(bitdefOCTH_SEL value)
    {
       OUVCTL1.b.OCTH_SEL = static_cast<unsigned short>(value);
       return *this;
@@ -1676,7 +1672,7 @@ public:
       return static_cast<bitdefOCTH_SEL>(OUVCTL1.b.OCTH_SEL);
    }
 
-   inline OUVCTL& setOVTH(bitdefOVTH value)
+   inline RegOUVCTL& setOVTH(bitdefOVTH value)
    {
       OUVCTL1.b.OVTH = static_cast<unsigned short>(value);
       return *this;
@@ -1686,7 +1682,7 @@ public:
       return static_cast<bitdefOVTH>(OUVCTL1.b.OVTH);
    }
 
-   inline OUVCTL& setUVTH(bitdefUVTH value)
+   inline RegOUVCTL& setUVTH(bitdefUVTH value)
    {
       OUVCTL1.b.UVTH = static_cast<unsigned short>(value);
       return *this;
@@ -1696,7 +1692,7 @@ public:
       return static_cast<bitdefUVTH>(OUVCTL1.b.UVTH);
    }
 
-   inline OUVCTL& setOV_HYS(bitdefOV_HYS value)
+   inline RegOUVCTL& setOV_HYS(bitdefOV_HYS value)
    {
       OUVCTL2.b.OV_HYS = static_cast<unsigned short>(value);
       return *this;
@@ -1706,7 +1702,7 @@ public:
       return static_cast<bitdefOV_HYS>(OUVCTL2.b.OV_HYS);
    }
 
-   inline OUVCTL& setUV_HYS(bitdefUV_HYS value)
+   inline RegOUVCTL& setUV_HYS(bitdefUV_HYS value)
    {
       OUVCTL2.b.UV_HYS = static_cast<unsigned short>(value);
       return *this;
@@ -1716,7 +1712,7 @@ public:
       return static_cast<bitdefUV_HYS>(OUVCTL2.b.UV_HYS);
    }
 
-   inline OUVCTL& setOV_DLY(bitdefOV_DLY value)
+   inline RegOUVCTL& setOV_DLY(bitdefOV_DLY value)
    {
       OUVCTL2.b.OV_DLY = static_cast<unsigned short>(value);
       return *this;
@@ -1726,7 +1722,7 @@ public:
       return static_cast<bitdefOV_DLY>(OUVCTL2.b.OV_DLY);
    }
 
-   inline OUVCTL& setUV_DLY(bitdefUV_DLY value)
+   inline RegOUVCTL& setUV_DLY(bitdefUV_DLY value)
    {
       OUVCTL2.b.UV_DLY = static_cast<unsigned short>(value);
       return *this;

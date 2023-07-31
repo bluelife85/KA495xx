@@ -23,7 +23,7 @@ public:
    RegCVSEL CVSEL;
    RegGVSEL GVSEL;
    RegFUSE FUSE;
-   OUVCTL OUVCTL;
+   RegOUVCTL OUVCTL;
    RegOPMODE OPMODE;
    RegGPIO123 GPIO1;
    RegGPIO123 GPIO2;
@@ -37,11 +37,11 @@ public:
    RegINRCV INRCV;
    RegINR_CTL_DIAG_EN INR_CTL_DIAG_EN;
    RegSTAT STAT;
-   RegCV_AD CV_AD;
+   RegCV_AD CV_AD[22];
    RegVPACK_AD VPACK_AD;
-   RegTMONI_AD TMONI_AD;
+   RegTMONI_AD TMONI_AD[5];
    RegVDD55_AD VDD55_AD;
-   RegGPIO12_AD GPIO12_AD;
+   RegGPIO12_AD GPIO12_AD[2];
    RegCVI_AD CVI_AD;
    RegVDD18_AD VDD18_AD;
    RegREGEXT_AD REGEXT_AD;
@@ -54,8 +54,13 @@ public:
    RegTMONRES TMON_Resistance;
    Ka495xx();
    void setHw(ka495xx_hardwares* hw);
+   bool sleep();
+   bool wakeup();
+   bool update();
 private:
    Ka495xx_interface interface;
+   bool isInitialized;
+   void setDefault();
 };
 
 #endif /* __DRIVER_KA495XX_H__ */
