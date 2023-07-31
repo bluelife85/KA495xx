@@ -335,13 +335,13 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegPWR_CTRL& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::PWR_CTRL, &reg.bytes[0]);
       return *this;
    }
    RegPWR_CTRL& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::PWR_CTRL, &reg.bytes[0]);
       return *this;
    }
@@ -556,13 +556,13 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegINT_EN& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::INTEN, &reg.bytes[0]);
       return *this;
    }
    RegINT_EN& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::INTEN, &reg.bytes[0]);
       return *this;
    }
@@ -736,13 +736,13 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegSPIWD_CTL& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::SPIWD, &reg.bytes[0]);
       return *this;
    }
    RegSPIWD_CTL& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::SPIWD, &reg.bytes[0]);
       return *this;
    }
@@ -833,13 +833,13 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegFDRV_CTRL& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::FDRV, &reg.bytes[0]);
       return *this;
    }
    RegFDRV_CTRL& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::FDRV, &reg.bytes[0]);
       return *this;
    }
@@ -1023,14 +1023,14 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegCVSEL& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::CVSEL1, &CVSEL1.bytes[0]);
       ifc->write(Ka495xx_addr::CVSEL2, &CVSEL2.bytes[0]);
       return *this;
    }
    RegCVSEL& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::CVSEL1, &CVSEL1.bytes[0]);
       ifc->read(Ka495xx_addr::CVSEL2, &CVSEL2.bytes[0]);
       return *this;
@@ -1143,13 +1143,13 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegGVSEL& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::GVSEL, &reg.bytes[0]);
       return *this;
    }
    RegGVSEL& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::GVSEL, &reg.bytes[0]);
       return *this;
    }
@@ -1313,7 +1313,7 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegFUSE& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::FUSE1, &FUSE1.bytes[0]);
       ifc->write(Ka495xx_addr::FUSE2, &FUSE2.bytes[0]);
       ifc->write(Ka495xx_addr::FUSE_BLOW, &FUSE_BLOW.bytes[0]);
@@ -1321,7 +1321,7 @@ public:
    }
    RegFUSE& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::FUSE1, &FUSE1.bytes[0]);
       ifc->read(Ka495xx_addr::FUSE2, &FUSE2.bytes[0]);
       ifc->read(Ka495xx_addr::FUSE_BLOW, &FUSE_BLOW.bytes[0]);
@@ -1653,14 +1653,14 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    OUVCTL& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::OUVCTL1, &OUVCTL1.bytes[0]);
       ifc->write(Ka495xx_addr::OUVCTL2, &OUVCTL2.bytes[0]);
       return *this;
    }
    OUVCTL& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::OUVCTL1, &OUVCTL1.bytes[0]);
       ifc->read(Ka495xx_addr::OUVCTL2, &OUVCTL2.bytes[0]);
       return *this;
@@ -1816,13 +1816,13 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegOPMODE& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::OPMODE, &OPMODE.bytes[0]);
       return *this;
    }
    RegOPMODE& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::OPMODE, &OPMODE.bytes[0]);
       return *this;
    }
@@ -2001,13 +2001,13 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegGPIO123& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(address, &GPIO.bytes[0]);
       return *this;
    }
    RegGPIO123& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(address, &GPIO.bytes[0]);
       return *this;
    }
@@ -2139,13 +2139,13 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegGPIOHV& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::GPIOH, &GPOH.bytes[0]);
       return *this;
    }
    RegGPIOHV& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::GPIOH, &GPOH.bytes[0]);
       return *this;
    }
@@ -2262,13 +2262,13 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegGPIO4& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::GPIO4, &GPIO4.bytes[0]);
       return *this;
    }
    RegGPIO4& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::GPIO4, &GPIO4.bytes[0]);
       return *this;
    }
@@ -2641,7 +2641,7 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegALARM& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::ALARM1, &ALARM1.bytes[0]);
       ifc->write(Ka495xx_addr::ALARM2, &ALARM2.bytes[0]);
       ifc->write(Ka495xx_addr::ALARM3, &ALARM3.bytes[0]);
@@ -2649,7 +2649,7 @@ public:
    }
    RegALARM& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::ALARM1, &ALARM1.bytes[0]);
       ifc->read(Ka495xx_addr::ALARM2, &ALARM2.bytes[0]);
       ifc->read(Ka495xx_addr::ALARM3, &ALARM3.bytes[0]);
@@ -2795,14 +2795,14 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegCBSEL& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::CBSEL1, &CBSEL1.bytes[0]);
       ifc->write(Ka495xx_addr::CBSEL2, &CBSEL2.bytes[0]);
       return *this;
    }
    RegCBSEL& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::CBSEL1, &CBSEL1.bytes[0]);
       ifc->read(Ka495xx_addr::CBSEL2, &CBSEL2.bytes[0]);
       return *this;
@@ -2911,14 +2911,14 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegOTHCTL& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::OTH, &OTH.bytes[0]);
       ifc->write(Ka495xx_addr::OTH, &OTH.bytes[0]);
       return *this;
    }
    RegOTHCTL& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::CBSEL1, &OTH.bytes[0]);
       ifc->read(Ka495xx_addr::CBSEL2, &OTH.bytes[0]);
       return *this;
@@ -3059,13 +3059,13 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegADCTL& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::ADC, &ADCTL.bytes[0]);
       return *this;
    }
    RegADCTL& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::ADC, &ADCTL.bytes[0]);
       return *this;
    }
@@ -3177,14 +3177,14 @@ public:
    void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
    RegINRCV& write()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->write(Ka495xx_addr::INRCV1, &INRCV1.bytes[0]);
       ifc->write(Ka495xx_addr::INRCV2, &INRCV2.bytes[0]);
       return *this;
    }
    RegINRCV& update()
    {
-      if(ifc == nullptr) return;
+      if(ifc == nullptr) return *this;
       ifc->read(Ka495xx_addr::INRCV1, &INRCV1.bytes[0]);
       ifc->read(Ka495xx_addr::INRCV2, &INRCV2.bytes[0]);
       return *this;
@@ -3251,4 +3251,735 @@ private:
    } INRCV2;
 };
 
+enum class bitdefADIH_CSYNC_SEL
+{
+   SYNC_1CELL = 0x01,
+   SYNC_2CELL = 0x02,
+   SYNC_3CELL = 0x03,
+   SYNC_4CELL = 0x04,
+   SYNC_5CELL = 0x05,
+   SYNC_6CELL = 0x06,
+   SYNC_7CELL = 0x07,
+   SYNC_8CELL = 0x08,
+   SYNC_9CELL = 0x09,
+   SYNC_10CELL = 0x0A,
+   SYNC_11CELL = 0x0B,
+   SYNC_12CELL = 0x0C,
+   SYNC_13CELL = 0x0D,
+   SYNC_14CELL = 0x0E,
+   SYNC_15CELL = 0x0F,
+   SYNC_16CELL = 0x10,
+   SYNC_17CELL = 0x11,
+   SYNC_18CELL = 0x12,
+   SYNC_19CELL = 0x13,
+   SYNC_20CELL = 0x14,
+   SYNC_21CELL = 0x15,
+   SYNC_22CELL = 0x16
+};
+
+enum class bitdefFET_DIAG_EN
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+enum class bitdefFET_DIAG_SEL
+{
+   CFET_ON = 0x00,
+   DFET_ON = 0x01,
+   CFET_OFF = 0x02,
+   DFET_OFF = 0x03,
+};
+
+enum class bitdefDIAG_IHY_EN
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+enum class bitdefDIAG_ISD_EN
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+enum class bitdefNPD_INR
+{
+   disable = 0x00,
+   enable = 0x01
+};
+
+class RegINR_CTL_DIAG_EN
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegINR_CTL_DIAG_EN& write()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->write(Ka495xx_addr::INR_DIAG_EN, &INR_CTL_DIAG_EN.bytes[0]);
+      return *this;
+   }
+   RegINR_CTL_DIAG_EN& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::INR_DIAG_EN, &INR_CTL_DIAG_EN.bytes[0]);
+      return *this;
+   }
+
+   inline RegINR_CTL_DIAG_EN& setADIH_CSYNC_SEL(bitdefADIH_CSYNC_SEL value)
+   {
+      INR_CTL_DIAG_EN.b.ADIH_CSYNC_SEL = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefADIH_CSYNC_SEL getADIH_CSYNC_SEL() const
+   {
+      return static_cast<bitdefADIH_CSYNC_SEL>(INR_CTL_DIAG_EN.b.ADIH_CSYNC_SEL);
+   }
+
+   inline RegINR_CTL_DIAG_EN& setFET_DIAG_EN(bitdefFET_DIAG_EN value)
+   {
+      INR_CTL_DIAG_EN.b.FET_DIAG_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefFET_DIAG_EN getFET_DIAG_EN() const
+   {
+      return static_cast<bitdefFET_DIAG_EN>(INR_CTL_DIAG_EN.b.FET_DIAG_EN);
+   }
+
+   inline RegINR_CTL_DIAG_EN& setFET_DIAG_SEL(bitdefFET_DIAG_SEL value)
+   {
+      INR_CTL_DIAG_EN.b.FET_DIAG_SEL = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefFET_DIAG_SEL getFET_DIAG_SEL() const
+   {
+      return static_cast<bitdefFET_DIAG_SEL>(INR_CTL_DIAG_EN.b.FET_DIAG_SEL);
+   }
+
+   inline RegINR_CTL_DIAG_EN& setDIAG_IHY_EN(bitdefDIAG_IHY_EN value)
+   {
+      INR_CTL_DIAG_EN.b.DIAG_IHY_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefDIAG_IHY_EN getDIAG_IHY_EN() const
+   {
+      return static_cast<bitdefDIAG_IHY_EN>(INR_CTL_DIAG_EN.b.DIAG_IHY_EN);
+   }
+
+   inline RegINR_CTL_DIAG_EN& setDIAG_ISD_EN(bitdefDIAG_ISD_EN value)
+   {
+      INR_CTL_DIAG_EN.b.DIAG_ISD_EN = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefDIAG_ISD_EN getDIAG_ISD_EN() const
+   {
+      return static_cast<bitdefDIAG_ISD_EN>(INR_CTL_DIAG_EN.b.DIAG_ISD_EN);
+   }
+
+   inline RegINR_CTL_DIAG_EN& setNPD_INR(bitdefNPD_INR value)
+   {
+      INR_CTL_DIAG_EN.b.NPD_INR = static_cast<unsigned short>(value);
+      return *this;
+   }
+   inline bitdefNPD_INR getNPD_INR() const
+   {
+      return static_cast<bitdefNPD_INR>(INR_CTL_DIAG_EN.b.NPD_INR);
+   }
+private:
+   Ka495xx_interface* ifc;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short NPD_INR : 1;
+         unsigned short : 4;
+         unsigned short DIAG_ISD_EN : 1;
+         unsigned short DIAG_IHY_EN : 1;
+         unsigned short : 1;
+         unsigned short FET_DIAG_SEL : 2;
+         unsigned short FET_DIAG_EN : 1;
+         unsigned short ADIH_CSYNC_SEL : 5;
+      } b;
+   } INR_CTL_DIAG_EN;
+};
+
+enum class bitdefST_GPIO3
+{
+   low = 0x00,
+   high = 0x01
+};
+
+enum class bitdefST_GPIO2
+{
+   low = 0x00,
+   high = 0x01
+};
+enum class bitdefST_GPIO1
+{
+   low = 0x00,
+   high = 0x01
+};
+
+enum class bitdefFDRV_DIS_ST
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefFDRV_CHG_ST
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefGPOH2_ST
+{
+   hi_z = 0x00,
+   low = 0x01
+};
+
+enum class bitdefGPOH1_ST
+{
+   hi_z = 0x00,
+   low = 0x01
+};
+
+enum class bitdefIADS_DONE
+{
+   imcomplete = 0x00,
+   done = 0x01
+};
+
+enum class bitdefIADH_DONE
+{
+   imcomplete = 0x00,
+   done = 0x01
+};
+
+enum class bitdefVAD_DONE
+{
+   importcomplete = 0x00,
+   done = 0x01
+};
+
+enum class bitdefST_INTM
+{
+   not_int_mode = 0x00,
+   int_mode = 0x01
+};
+
+enum class bitdefST_LP
+{
+   not_low_power_mode = 0x00,
+   low_power_mode = 0x01
+};
+
+enum class bitdefST_SDWN
+{
+   not_shut_down_mode = 0x00,
+   shut_down_mode = 0x01
+};
+
+enum class bitdefST_STBY
+{
+   not_standby_mode = 0x00,
+   standby_mode = 0x01
+};
+
+enum class bitdefST_ACT
+{
+   not_active_mode = 0x00,
+   active_mode = 0x01
+};
+
+enum class bitdefST_TMONI5SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_TMONI4SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_TMONI3SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_TMONI2SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_TMONI1SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_GPAD2SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_GPAD1SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_VPACKSEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_VDD18SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_REG_EXT_SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_VDD55SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefST_VREF2SEL
+{
+   off = 0x00,
+   on = 0x01
+};
+
+enum class bitdefLDM_DET_F
+{
+   no_load = 0x00,
+   detected = 0x01
+};
+
+enum class bitdefVPC_DET_F
+{
+   low = 0x00,
+   high = 0x01
+};
+
+enum class bitdefWDT_F
+{
+   not_detect = 0x00,
+   detected = 0x01
+};
+
+enum class bitdefCUR_H_F
+{
+   not_detect = 0x00,
+   detected = 0x01
+};
+
+enum class bitdefLDM_H_F
+{
+   not_detect = 0x00,
+   detected = 0x01
+};
+
+enum class bitdefLDM_L_F
+{
+   not_detect = 0x00,
+   detected = 0x01
+};
+
+enum class bitdefVPC_H_F
+{
+   not_detect = 0x00,
+   detected = 0x01
+};
+
+enum class bitdefVPC_L_F
+{
+   not_detect = 0x00,
+   detected = 0x01
+};
+
+enum class bitdefFUSEB_F
+{
+   not_complete = 0x00,
+   completed = 0x01
+};
+
+enum class bitdefST_OTH
+{
+   not_detected = 0x00,
+   detected = 0x01
+};
+
+enum class bitdefST_BIAS
+{
+   not_detected = 0x00,
+   detected = 0x01
+};
+
+enum class bitdefST_OV
+{
+   not_detected = 0x00,
+   detected = 0x01
+};
+
+enum class bitdefST_UV
+{
+   not_detected = 0x00,
+   detected = 0x01
+};
+
+class RegSTAT
+{
+public:
+   void hal(Ka495xx_interface* ifc) { this->ifc = ifc; }
+   RegSTAT& write()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->write(Ka495xx_addr::STAT1, &STAT1.bytes[0]);
+      ifc->write(Ka495xx_addr::STAT5, &STAT5.bytes[0]);
+      return *this;
+   }
+   RegSTAT& update()
+   {
+      if(ifc == nullptr) return *this;
+      ifc->read(Ka495xx_addr::STAT1, &STAT1.bytes[0]);
+      ST_GPIO3 = static_cast<bitdefST_GPIO3>(STAT1.b.ST_GPIO3);
+      ST_GPIO2 = static_cast<bitdefST_GPIO2>(STAT1.b.ST_GPIO2);
+      ST_GPIO1 = static_cast<bitdefST_GPIO1>(STAT1.b.ST_GPIO1);
+      FDRV_DIS_ST = static_cast<bitdefFDRV_DIS_ST>(STAT1.b.FDRV_DIS_ST);
+      FDRV_CHG_ST = static_cast<bitdefFDRV_CHG_ST>(STAT1.b.FDRV_CHG_ST);
+      GPOH2_ST = static_cast<bitdefGPOH2_ST>(STAT1.b.GPOH2_ST);
+      GPOH1_ST = static_cast<bitdefGPOH1_ST>(STAT1.b.GPOH1_ST);
+      IADS_DONE = static_cast<bitdefIADS_DONE>(STAT1.b.IADS_DONE);
+      IADH_DONE = static_cast<bitdefIADH_DONE>(STAT1.b.IADH_DONE);
+      VAD_DONE = static_cast<bitdefVAD_DONE>(STAT1.b.VAD_DONE);
+      ST_LP = static_cast<bitdefST_LP>(STAT1.b.ST_LP);
+      ST_SDWN = static_cast<bitdefST_SDWN>(STAT1.b.ST_SDWN);
+      ST_STBY = static_cast<bitdefST_STBY>(STAT1.b.ST_STBY);
+      ST_ACT = static_cast<bitdefST_ACT>(STAT1.b.ST_ACT);
+      ifc->read(Ka495xx_addr::STAT2, &STAT2.bytes[0]);
+      ifc->read(Ka495xx_addr::STAT3, &STAT3.bytes[0]);
+      ST_CVSEL = STAT2.hfword;
+      ST_CVSEL = (unsigned long) STAT3.hfword << 16;
+      ifc->read(Ka495xx_addr::STAT4, &STAT4.bytes[0]);
+      ST_TMONI5SEL = static_cast<bitdefST_TMONI5SEL>(STAT4.b.ST_TMONI5SEL);
+      ST_TMONI4SEL = static_cast<bitdefST_TMONI4SEL>(STAT4.b.ST_TMONI4SEL);
+      ST_TMONI3SEL = static_cast<bitdefST_TMONI3SEL>(STAT4.b.ST_TMONI3SEL);
+      ST_TMONI2SEL = static_cast<bitdefST_TMONI2SEL>(STAT4.b.ST_TMONI2SEL);
+      ST_TMONI1SEL = static_cast<bitdefST_TMONI1SEL>(STAT4.b.ST_TMONI1SEL);
+      ST_GPAD2SEL = static_cast<bitdefST_GPAD2SEL>(STAT4.b.ST_GPAD2SEL);
+      ST_GPAD1SEL = static_cast<bitdefST_GPAD1SEL>(STAT4.b.ST_GPAD1SEL);
+      ST_VPACKSEL = static_cast<bitdefST_VPACKSEL>(STAT4.b.ST_VPACKSEL);
+      ST_VDD18SEL = static_cast<bitdefST_VDD18SEL>(STAT4.b.ST_VDD18SEL);
+      ST_REG_EXT_SEL = static_cast<bitdefST_REG_EXT_SEL>(STAT4.b.ST_REG_EXT_SEL);
+      ST_VDD55SEL = static_cast<bitdefST_VDD55SEL>(STAT4.b.ST_VDD55SEL);
+      ST_VREF2SEL = static_cast<bitdefST_VREF2SEL>(STAT4.b.ST_VREF2SEL);
+      ifc->read(Ka495xx_addr::STAT5, &STAT5.bytes[0]);
+      LDM_DET_F = static_cast<bitdefLDM_DET_F>(STAT5.b.LDM_DET_F);
+      VPC_DET_F = static_cast<bitdefVPC_DET_F>(STAT5.b.VPC_DET_F);
+      WDT_F = static_cast<bitdefWDT_F>(STAT5.b.WDT_F);;
+      CUR_H_F = static_cast<bitdefCUR_H_F>(STAT5.b.CUR_H_F);
+      LDM_H_F = static_cast<bitdefLDM_H_F>(STAT5.b.LDM_H_F);
+      LDM_L_F = static_cast<bitdefLDM_L_F>(STAT5.b.LDM_L_F);
+      VPC_H_F = static_cast<bitdefVPC_H_F>(STAT5.b.VPC_H_F);
+      VPC_L_F = static_cast<bitdefVPC_L_F>(STAT5.b.VPC_L_F);
+      FUSEB_F = static_cast<bitdefFUSEB_F>(STAT5.b.FUSEB_F);
+      ST_OTH = static_cast<bitdefST_OTH>(STAT5.b.ST_OTH);
+      ST_BIAS = static_cast<bitdefST_BIAS>(STAT5.b.ST_BIAS);
+      ST_OV = static_cast<bitdefST_OV>(STAT5.b.ST_OV);
+      ST_UV = static_cast<bitdefST_UV>(STAT5.b.ST_UV);
+
+      return *this;
+   }
+
+   inline bitdefST_GPIO3 getST_GPIO3() const { return ST_GPIO3; }
+
+   inline bitdefST_GPIO2 getST_GPIO2() const { return ST_GPIO2; }
+
+   inline bitdefST_GPIO1 getST_GPIO1() const { return ST_GPIO1; }
+
+   inline bitdefFDRV_DIS_ST getFDRV_DIS_ST() const { return FDRV_DIS_ST; }
+
+   inline bitdefFDRV_CHG_ST getFDRV_CHG_ST() const { return FDRV_CHG_ST; }
+
+   inline bitdefGPOH2_ST getGPOH2_ST() const { return GPOH2_ST; }
+
+   inline bitdefGPOH1_ST getGPOH1_ST() const { return GPOH1_ST; }
+
+   inline RegSTAT& clearIADS_DONE()
+   {
+      STAT1.b.IADS_DONE = 1;
+      return *this;
+   }
+   inline bitdefIADS_DONE getIADS_DONE() const { return IADS_DONE; }
+
+   inline RegSTAT& clearIADH_DONE()
+   {
+      STAT1.b.IADH_DONE = 1;
+      return *this;
+   }
+   inline bitdefIADH_DONE getIADH_DONE() const { return IADH_DONE; }
+
+   inline RegSTAT& clearVAD_DONE()
+   {
+      STAT1.b.VAD_DONE = 1;
+      return *this;
+   }
+   inline bitdefVAD_DONE getVAD_DONE() const { return VAD_DONE; }
+
+   inline bitdefST_INTM getST_INTM() const { return ST_INTM; }
+
+   inline bitdefST_LP getST_LP() const { return ST_LP; }
+
+   inline bitdefST_SDWN getST_SDWN() const { return ST_SDWN; }
+
+   inline bitdefST_STBY getST_STBY() const { return ST_STBY; }
+
+   inline bitdefST_ACT getST_ACT() const { return ST_ACT; }
+
+   inline unsigned long getST_CVSEL() const { return ST_CVSEL; }
+
+   inline bitdefST_TMONI5SEL getST_TMONI5SEL() const { return ST_TMONI5SEL; }
+
+   inline bitdefST_TMONI4SEL getST_TMONI4SEL() const { return ST_TMONI4SEL; }
+   
+   inline bitdefST_TMONI3SEL getST_TMONI3SEL() const { return ST_TMONI3SEL; }
+   
+   inline bitdefST_TMONI2SEL getST_TMONI2SEL() const { return ST_TMONI2SEL; }
+   
+   inline bitdefST_TMONI1SEL getST_TMONI1SEL() const { return ST_TMONI1SEL; }
+   
+   inline bitdefST_GPAD2SEL getST_GPAD2SEL() const { return ST_GPAD2SEL; }
+   
+   inline bitdefST_GPAD1SEL getST_GPAD1SEL() const { return ST_GPAD1SEL; }
+
+   inline bitdefST_VPACKSEL getST_VPACKSEL() const { return ST_VPACKSEL; }
+   
+   inline bitdefST_VDD18SEL getST_VDD18SEL() const { return ST_VDD18SEL; }
+   
+   inline bitdefST_REG_EXT_SEL getST_REG_EXT_SEL() const { return ST_REG_EXT_SEL; }
+   
+   inline bitdefST_VDD55SEL getST_VDD55SEL() const { return ST_VDD55SEL; }
+   
+   inline bitdefST_VREF2SEL getST_VREF2SEL() const { return ST_VREF2SEL; }
+
+   inline bitdefLDM_DET_F getLDM_DET_F() const { return LDM_DET_F; }
+
+   inline bitdefVPC_DET_F getVPC_DET_F() const { return VPC_DET_F; }
+
+   inline RegSTAT& clearCUR_H_F()
+   {
+      STAT5.b.CUR_H_F = 1;
+      return *this;
+   }
+   inline bitdefCUR_H_F getCUR_H_F() const { return CUR_H_F; }
+
+   inline RegSTAT& clearLDM_H_F()
+   {
+      STAT5.b.LDM_H_F = 1;
+      return *this;
+   }
+   inline bitdefLDM_H_F getLDM_H_F() const { return LDM_H_F; }
+
+   inline RegSTAT& clearLDM_L_F()
+   {
+      STAT5.b.LDM_L_F = 1;
+      return *this;
+   }
+   inline bitdefLDM_L_F getLDM_L_F() const { return LDM_L_F; }
+
+      inline RegSTAT& clearLDM_H_F()
+   {
+      STAT5.b.LDM_H_F = 1;
+      return *this;
+   }
+   inline bitdefVPC_H_F getVPC_H_F() const { return VPC_H_F; }
+
+   inline RegSTAT& clearVPC_L_F()
+   {
+      STAT5.b.VPC_L_F = 1;
+      return *this;
+   }
+   inline bitdefVPC_L_F getVPC_L_F() const { return VPC_L_F; }
+
+   inline bitdefFUSEB_F getFUSEB_F() const { return FUSEB_F; }
+
+   inline bitdefST_OTH getST_OTH() const { return ST_OTH; }
+
+   inline bitdefST_BIAS getST_BIAS() const { return ST_BIAS; }
+
+   inline bitdefST_OV getST_OV() const { return ST_OV; }
+
+   inline bitdefST_UV getST_UV() const { return ST_UV; }
+private:
+   Ka495xx_interface* ifc;
+   bitdefST_GPIO3 ST_GPIO3;
+   bitdefST_GPIO2 ST_GPIO2;
+   bitdefST_GPIO1 ST_GPIO1;
+   bitdefFDRV_DIS_ST FDRV_DIS_ST;
+   bitdefFDRV_CHG_ST FDRV_CHG_ST;
+   bitdefGPOH2_ST GPOH2_ST;
+   bitdefGPOH1_ST GPOH1_ST;
+   bitdefIADS_DONE IADS_DONE;
+   bitdefIADH_DONE IADH_DONE;
+   bitdefVAD_DONE VAD_DONE;
+   bitdefST_INTM ST_INTM;
+   bitdefST_LP ST_LP;
+   bitdefST_SDWN ST_SDWN;
+   bitdefST_STBY ST_STBY;
+   bitdefST_ACT ST_ACT;
+   unsigned long ST_CVSEL;
+   bitdefST_TMONI5SEL ST_TMONI5SEL;
+   bitdefST_TMONI4SEL ST_TMONI4SEL;
+   bitdefST_TMONI3SEL ST_TMONI3SEL;
+   bitdefST_TMONI2SEL ST_TMONI2SEL;
+   bitdefST_TMONI1SEL ST_TMONI1SEL;
+   bitdefST_GPAD2SEL ST_GPAD2SEL;
+   bitdefST_GPAD1SEL ST_GPAD1SEL;
+   bitdefST_VPACKSEL ST_VPACKSEL;
+   bitdefST_VDD18SEL ST_VDD18SEL;
+   bitdefST_REG_EXT_SEL ST_REG_EXT_SEL;
+   bitdefST_VDD55SEL ST_VDD55SEL;
+   bitdefST_VREF2SEL ST_VREF2SEL;
+   bitdefLDM_DET_F LDM_DET_F;
+   bitdefVPC_DET_F VPC_DET_F;
+   bitdefWDT_F WDT_F;
+   bitdefCUR_H_F CUR_H_F;
+   bitdefLDM_H_F LDM_H_F;
+   bitdefLDM_L_F LDM_L_F;
+   bitdefVPC_H_F VPC_H_F;
+   bitdefVPC_L_F VPC_L_F;
+   bitdefFUSEB_F FUSEB_F;
+   bitdefST_OTH ST_OTH;
+   bitdefST_BIAS ST_BIAS;
+   bitdefST_OV ST_OV;
+   bitdefST_UV ST_UV;
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short ST_ACT : 1;
+         unsigned short ST_STBY : 1;
+         unsigned short ST_SDWN : 1;
+         unsigned short ST_LP : 1;
+         unsigned short ST_INTM : 1;
+         unsigned short VAD_DONE : 1;
+         unsigned short IADH_DONE : 1;
+         unsigned short IADS_DONE : 1;
+         unsigned short GPOH1_ST : 1;
+         unsigned short GPOH2_ST : 1;
+         unsigned short FDRV_CHG_ST : 1;
+         unsigned short FDRV_DIS_ST : 1;
+         unsigned short : 1;
+         unsigned short ST_GPIO1 : 1;
+         unsigned short ST_GPIO2 : 1;
+         unsigned short ST_GPIO3 : 1;
+      } b;
+   } STAT1;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL1 : 1;
+         unsigned short CELL2 : 1;
+         unsigned short CELL3 : 1;
+         unsigned short CELL4 : 1;
+         unsigned short CELL5 : 1;
+         unsigned short CELL6 : 1;
+         unsigned short CELL7 : 1;
+         unsigned short CELL8 : 1;
+         unsigned short CELL9 : 1;
+         unsigned short CELL10 : 1;
+         unsigned short CELL11 : 1;
+         unsigned short CELL12 : 1;
+         unsigned short CELL13 : 1;
+         unsigned short CELL14 : 1;
+         unsigned short CELL15 : 1;
+         unsigned short CELL16 : 1;
+      } b;
+   } STAT2;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short CELL17 : 1;
+         unsigned short CELL18 : 1;
+         unsigned short CELL19 : 1;
+         unsigned short CELL20 : 1;
+         unsigned short CELL21 : 1;
+         unsigned short CELL22 : 1;
+         unsigned short : 10;
+      } b;
+   } STAT3;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short ST_VREF2SEL : 1;
+         unsigned short : 1;
+         unsigned short ST_VDD55SEL : 1;
+         unsigned short ST_REG_EXT_SEL : 1;
+         unsigned short ST_VDD18SEL : 1;
+         unsigned short ST_VPACKSEL : 1;
+         unsigned short ST_GPAD1SEL : 1;
+         unsigned short ST_GPAD2SEL : 1;
+         unsigned short ST_TMONI1SEL : 1;
+         unsigned short ST_TMONI2SEL : 1;
+         unsigned short ST_TMONI3SEL : 1;
+         unsigned short ST_TMONI4SEL : 1;
+         unsigned short ST_TMONI5SEL : 1;
+         unsigned short : 3;
+      } b;
+   } STAT4;
+
+   union
+   {
+      unsigned short hfword;
+      unsigned char bytes[2];
+      struct
+      {
+         unsigned short ST_UV : 1;
+         unsigned short ST_OV : 1;
+         unsigned short ST_BIAS : 1;
+         unsigned short ST_OTH : 1;
+         unsigned short FUSEB_F : 1;
+         unsigned short : 3;
+         unsigned short VPC_L_F : 1;
+         unsigned short VPC_H_F : 1;
+         unsigned short LDM_L_F : 1;
+         unsigned short LDM_H_F : 1;
+         unsigned short CUR_H_F : 1;
+         unsigned short WDT_F : 1;
+         unsigned short VPC_DET_F : 1;
+         unsigned short LDM_DET_F : 1;
+      } b;
+   } STAT5;
+};
 #endif /* __KA495XX_SFR_H__ */
